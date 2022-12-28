@@ -1,5 +1,11 @@
 package com.domain;
 
+
+
+
+
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,8 +26,15 @@ public class MemberVO {
 	private String pwdcheck;
 	private String name;
 	private String email;
-	private String birth;
+	private String year;
+	private String month;
+	private String day;
 	private String gender;
 	private String address;
+	private Date joinDate;
 	
+	public enum MemberGrade {
+		ROLE_ADMIN, ROLE_MEMBER
+	}
+
 }

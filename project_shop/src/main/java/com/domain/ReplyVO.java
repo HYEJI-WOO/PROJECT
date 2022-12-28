@@ -13,14 +13,15 @@ import lombok.ToString;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @ToString
-public class BoardVO {
-	private int bno; 
-	private String title; 
-	private String content; 
-	private String writer; 
-	private String imageFileName;
-    private Date writeDate;
-    private int replyCount;
+@Builder
+
+public class ReplyVO {
+	private int rno;
+	private int bno;
+	private String reply;
+	private String writer;
+	private Date replyDate;
+	private Date modifyDate;
+	
 }
