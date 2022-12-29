@@ -26,15 +26,16 @@
 </style>
 </head>
 <body>
-${auth.id}
-${auth.grade}
+	<div>
+		<a href="${contextPath}/board/list"><img src="${contextPath}/resources/images/LOGO.jpg" alt="LOGO" width="150" /></a>
+	</div>
 <nav class="navbar navbar-expand-sm bg-light navbar-dark justify-content-between">
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link active" href="${contextPath}/board/list">SHOP</a>
+      <a class="nav-link" href="#">SHOP</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Q&A</a>
+      <a class="nav-link active" href="${contextPath}/board/list">Q&A</a>
     </li>
      <li class="nav-item">
     <a class="nav-link" href="#">NOTICE</a>
@@ -57,6 +58,9 @@ ${auth.grade}
    	</li>
     <li class="nav-item">
       <a class="nav-link" style="color: black;" href="${contextPath}/member/myPage">마이페이지</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="color: black;" href="${contextPath}/member/cart">장바구니</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" style="color: black;" href="${contextPath}/member/logout">로그아웃</a>

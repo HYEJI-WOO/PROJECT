@@ -3,8 +3,8 @@
     
 <%@ include file="../layout/header.jsp" %>  
 <script src="${contextPath}/resources/js/board/list.js"></script>  
-<h1>Notice</h1>
-<a href="${contextPath}/board/writeForm" class="btn btn-dark">Write</a>
+<h1>Q&A</h1>
+<a href="${contextPath}/board/writeForm" class="btn btn-dark"  style="float: right;">Write</a>
 <div class="container my-3">
 	<form id="listForm">
 		<table class="table">

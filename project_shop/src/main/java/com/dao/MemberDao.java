@@ -20,6 +20,7 @@ private DataSource dataSource;
 	
 	// 회원가입
 	public void insertMember(MemberVO vo) {
+		String idCheck = null;
 		String query = "Insert into shop_member(mno, id, pwd, name, email, year, month, day, gender, address) values(SHOP_MNO_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try (
 			Connection conn = dataSource.getConnection();

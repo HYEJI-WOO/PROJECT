@@ -72,9 +72,9 @@ public class MemberController extends HttpServlet {
 					.address(address)
 					.build();
 			service.memberJoin(vo);
-			response.sendRedirect(contextPath+"/board");
-			return;
+			nextPage = "joinCheck";
 		}
+		 
 		
 		// 로그인폼
 		else if(pathInfo.equals("/loginForm")) {
