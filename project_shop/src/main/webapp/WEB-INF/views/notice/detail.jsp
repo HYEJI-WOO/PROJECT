@@ -44,7 +44,7 @@
 					<c:if test="${not empty notice.imageFileName}">
 						<input type="hidden" name="originFileName" value="${notice.imageFileName}">
 						<div class="preview">
-							<img class="originImg" src="${contextPath}/fileDownload?no=${notice.bno}&imageFileName=${notice.imageFileName}&path=board">
+							<img class="originImg" src="${contextPath}/fileDownload?no=${notice.bno}&imageFileName=${notice.imageFileName}&path=notice">
 						</div>
 					</c:if>
 					<c:if test="${empty notice.imageFileName}">
