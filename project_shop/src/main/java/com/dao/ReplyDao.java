@@ -21,7 +21,7 @@ public class ReplyDao {
 
 	public List<ReplyVO> list(int bno) {
 		List<ReplyVO> list = new ArrayList<ReplyVO>();
-		String query = "select * from reply_tbl where bno=?";
+		String query = "select * from shop_reply where bno=?";
 		
 		try (
 			Connection conn = dataSource.getConnection();
@@ -49,8 +49,8 @@ public class ReplyDao {
 	}
 	
 	public void insert(ReplyVO vo) {
-		String query = "insert into reply_tbl(rno,bno,reply,writer) values(seq_reply.nextval,?,?,?)";
-		String query2 = "update board_tbl set replycount=replycount+1 where bno=?";
+		String query = "insert into shop_reply(rno,bno,reply,writer) values(shop_reply_seq.nextval,?,?,?)";
+		String query2 = "update SHOP_BOARD set replycount=replycount+1 where bno=?";
 		try(Connection conn = dataSource.getConnection();){
 			try (
 					PreparedStatement pstmt = conn.prepareStatement(query);
@@ -76,8 +76,8 @@ public class ReplyDao {
 	}
 	
 	public void remove(ReplyVO vo) {
-		String query = "delete from reply_tbl where rno=?";
-		String query2 = "update board_tbl set replycount = replycount-1 where bno=?";
+		String query = "delete from shop_reply where rno=?";
+		String query2 = "update SHOP_BOARD set replycount = replycount-1 where bno=?";
 		try(Connection conn = dataSource.getConnection();){
 			try (
 				PreparedStatement pstmt = conn.prepareStatement(query);

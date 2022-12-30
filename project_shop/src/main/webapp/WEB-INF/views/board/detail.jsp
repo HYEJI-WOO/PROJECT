@@ -11,7 +11,21 @@
 	</div>
 	<form id="viewForm" enctype="multipart/form-data">
 		<table class="table">
-			
+			<tr>
+				<th>글번호</th>
+				<td>
+					${board.bno}
+					<input type="hidden" name="bno" value="${board.bno}">
+				</td>
+				<th>조회수</th>
+				<td>000</td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td>${board.writer}</td>
+				<th>작성일</th>
+				<td>${board.writeDate}</td>
+			</tr>
 			<tr>
 				<th>제목</th>
 				<td colspan="3">
@@ -42,14 +56,6 @@
 					</c:if>
 					</div>
 				</td>
-			</tr>
-			<tr>
-				<th>작성자</th>
-				<td>${board.writer}</td>
-			</tr>
-			<tr>				
-				<th>작성일</th>
-				<td>${board.writeDate}</td>
 			</tr>
 			<tr>
 				<td colspan="4" class="text-center">

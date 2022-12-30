@@ -1,6 +1,5 @@
 package com.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -12,24 +11,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.FileUtils;
-
 import com.common.FileUpload;
-import com.dao.BoardDao;
-import com.domain.BoardVO;
-import com.service.BoardService;
+import com.dao.NoticeDao;
+import com.domain.NoticeVO;
+import com.service.NoticeService;
 
-@WebServlet("/board/*")
-public class BoardController extends HttpServlet {
-
-	private BoardService service;
+@WebServlet("/notice/*")
+public class NoticeController extends HttpServlet {
+	
+	private NoticeService service;
 	private FileUpload multiReq;
 	
 	@Override
 	public void init() throws ServletException {
-		BoardDao dao = new BoardDao();
-		service = new BoardService(dao);
-		multiReq = new FileUpload("board/");
+		NoticeDao dao = new NoticeDao();
+		service = new NoticeService(dao);
+		multiReq = new FileUpload("notice/");
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -43,7 +40,7 @@ public class BoardController extends HttpServlet {
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String pathInfo = request.getPathInfo();
 		String contextPath = request.getContextPath();
-		final String PRIFIX = "/WEB-INF/views/board/";
+		final String PRIFIX = "/WEB-INF/views/notice/";
 		final String SUFFIX = ".jsp";
 		
 		RequestDispatcher rd = null;
@@ -51,17 +48,16 @@ public class BoardController extends HttpServlet {
 		
 		// 글목록
 		if(pathInfo==null || pathInfo.equals("/") || pathInfo.equals("/list")) {
-			List<BoardVO> boardList = service.boardList();
-			request.setAttribute("list", boardList);
+			List<NoticeVO> noticeList = service.noticeList();
+			request.setAttribute("list", noticeList);
 			nextPage = "list";
 		}
-		
-		// 글상세
+		// 글상세	
 		else if(pathInfo.equals("/detail")) {
 			String parambno = request.getParameter("bno");
 			int bno = Integer.parseInt(parambno);
-			BoardVO board = service.findBoard(bno);
-			request.setAttribute("board", board);
+			NoticeVO notice = service.findNotice(bno);
+			request.setAttribute("notice", notice);
 			nextPage = "detail";
 		}
 		
@@ -70,29 +66,29 @@ public class BoardController extends HttpServlet {
 			nextPage = "writeForm";
 		}
 		
-		// 글쓰기 처리
+		// 글쓰기처리
 		else if(pathInfo.equals("/write")) {
 			Map<String, String> req = multiReq.getMultipartRequest(request);
 			String imageFileName = req.get("imageFileName");
 			
-			BoardVO vo = BoardVO.builder()
+			NoticeVO vo = NoticeVO.builder()
 					.title(req.get("title"))
 					.content(req.get("content"))
 					.writer(req.get("writer"))
 					.imageFileName(req.get("imageFileName"))
 					.build();
-			int boardNO = service.addBoard(vo);
+			int noticeNO = service.addNotice(vo);
 
 			// 이미지파일을 첨부한 경우
 			if(imageFileName!=null && imageFileName.length()>0) {
-				multiReq.uploadImage(boardNO, imageFileName);
+				multiReq.uploadImage(noticeNO, imageFileName);
 			}
-			response.sendRedirect(contextPath+"/board");
+			response.sendRedirect(contextPath+"/notice");
 			return;
 		}
 		
 		// 글수정 처리
-		else if(pathInfo.equals("/modBoard")) {
+		else if(pathInfo.equals("/modNotice")) {
 			Map<String, String> req = multiReq.getMultipartRequest(request);
 			String paramBno = req.get("bno");
 			int bno = Integer.parseInt(paramBno);
@@ -100,13 +96,13 @@ public class BoardController extends HttpServlet {
 			String content = req.get("content");
 			String imageFileName = req.get("imageFileName");
 			
-			BoardVO vo = BoardVO.builder()
+			NoticeVO vo = NoticeVO.builder()
 					.bno(bno)
 					.title(title)
 					.content(content)
 					.imageFileName(imageFileName)
 					.build();
-			service.modBoard(vo);
+			service.modNotice(vo);
 			
 			if(imageFileName!=null) { // 이미지 파일이 있을 때
 				String originFileName = req.get("originFileName");
@@ -117,18 +113,18 @@ public class BoardController extends HttpServlet {
 					multiReq.deleteOriginImage(bno, originFileName);
 				}
 			} 
-			response.sendRedirect(contextPath+"/board");
+			response.sendRedirect(contextPath+"/notice");
 			return;
 		}
 		
 		// 글삭제 처리
-		else if(pathInfo.equals("/removeBoard")) {
+		else if(pathInfo.equals("/removeNotice")) {
 			Map<String, String> req = multiReq.getMultipartRequest(request);
 			String paramBno = req.get("bno");
 			int bno = Integer.parseInt(paramBno);
-			service.removeBoard(bno);
+			service.removeNotice(bno);
 			multiReq.deleteAllImage(bno);
-			response.sendRedirect(contextPath+"/board");
+			response.sendRedirect(contextPath+"/notice");
 			return;
 		}
 		
@@ -138,7 +134,6 @@ public class BoardController extends HttpServlet {
 		
 		rd = request.getRequestDispatcher(PRIFIX+nextPage+SUFFIX);
 		rd.forward(request, response);
-		
 	}
 	
 

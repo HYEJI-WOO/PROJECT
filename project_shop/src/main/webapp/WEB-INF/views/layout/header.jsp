@@ -35,10 +35,10 @@
       <a class="nav-link" href="#">SHOP</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="${contextPath}/board/list">Q&A</a>
+      <a class="nav-link" href="${contextPath}/board/list">Q&A</a>
     </li>
      <li class="nav-item">
-    <a class="nav-link" href="#">NOTICE</a>
+    <a class="nav-link" href="${contextPath}/notice/list">NOTICE</a>
   </li>
   </ul>
   <!-- 로그인,로그아웃,회원가입 -->

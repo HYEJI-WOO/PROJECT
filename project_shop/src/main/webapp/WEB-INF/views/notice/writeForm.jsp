@@ -1,14 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <%@ include file="../layout/header.jsp" %>  
-  
 <div class="container">
 	<div class="jumbotron">
 		<h1>Write</h1>
 	</div>
 	
-	<form action="${contextPath}/board/write" method="post" enctype="multipart/form-data">
+	<form action="${contextPath}/notice/write" method="post" enctype="multipart/form-data">
 		<div class="form-group">
 			제목 <input type="text" class="form-control" name="title">
 		</div>
@@ -25,4 +23,4 @@
 		<button class="btn btn-primary">작성하기</button>
 	</form>
 </div>
-<%@ include file="../layout/footer.jsp" %>  
+<%@ include file="../layout/footer.jsp" %> 

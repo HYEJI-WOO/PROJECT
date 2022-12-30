@@ -9,51 +9,50 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.common.ConnectionUtil;
-import com.domain.BoardVO;
+import com.domain.NoticeVO;
 
-public class BoardDao {
-	
+public class NoticeDao {
 	private DataSource dataSource;
 	
-	public BoardDao() {
+	public NoticeDao() {
 		dataSource = ConnectionUtil.getDataSource();
 	}
 	
 	// 글목록
-	public List<BoardVO> selectAll() {
-		String query = "select * from SHOP_BOARD order by bno desc";
-		List<BoardVO> list = new ArrayList();
+	public List<NoticeVO> selectAll() {
+		String query = "select * from SHOP_NOTICE order by bno desc";
+		List<NoticeVO> list = new ArrayList();
 		try (
-			Connection conn = dataSource.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(query);
-			ResultSet rs = pstmt.executeQuery();
-		){
-			while(rs.next()) {
-				BoardVO vo = BoardVO.builder()
-					.bno(rs.getInt("bno"))
-					.title(rs.getString("title"))
-					.content(rs.getString("content"))
-					.writer(rs.getString("writer"))
-					.writeDate(rs.getDate("writeDate"))
-					.imageFileName(rs.getString("imageFileName"))
-					.build();
-				list.add(vo);
+				Connection conn = dataSource.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(query);
+				ResultSet rs = pstmt.executeQuery();
+			){
+				while(rs.next()) {
+					NoticeVO vo = NoticeVO.builder()
+						.bno(rs.getInt("bno"))
+						.title(rs.getString("title"))
+						.content(rs.getString("content"))
+						.writer(rs.getString("writer"))
+						.writeDate(rs.getDate("writeDate"))
+						.imageFileName(rs.getString("imageFileName"))
+						.build();
+					list.add(vo);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
+			return list;
 	}
 	
 	// 글쓰기
-	public int insertBoard(BoardVO vo) {
-		String query = "INSERT INTO SHOP_BOARD(BNO, TITLE, CONTENT, WRITER, imageFileName) VALUES(?,?,?,?,?)";
-		int boardNo = getNewBno();
+	public int insertNotice(NoticeVO vo) {
+		String query = "INSERT INTO SHOP_NOTICE(BNO, TITLE, CONTENT, WRITER, imageFileName) VALUES(?,?,?,?,?)";
+		int noticeNo = getNewBno();
 		try (
 			Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(query);
 		){
-			pstmt.setInt(1, boardNo);
+			pstmt.setInt(1, noticeNo);
 			pstmt.setString(2, vo.getTitle());
 			pstmt.setString(3, vo.getContent());
 			pstmt.setString(4, vo.getWriter());
@@ -62,59 +61,59 @@ public class BoardDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return boardNo;
+		return noticeNo;
 	}
 	
 	// 새로운 글번호 생성
 	public int getNewBno() {
-		int boardNo = 0;
-		String query = "SELECT MAX(BNO)+1 AS boardNO FROM SHOP_BOARD";
+		int noticeNo = 0;
+		String query = "SELECT MAX(BNO)+1 AS noticeNO FROM SHOP_NOTICE";
 		try (
 			Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
 		){
 			if(rs.next()) {
-				boardNo = rs.getInt("boardNO");
+				noticeNo = rs.getInt("noticeNO");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return boardNo;
+		return noticeNo;
 	}
 	
 	// 글상세
-	public BoardVO selectOne(int bno) {
-		BoardVO vo = null;
-		String query = "select * from SHOP_BOARD where bno=?";
+	public NoticeVO selectOne(int bno) {
+		NoticeVO vo = null;
+		String query = "select * from SHOP_NOTICE where bno=?";
 		try (
-			Connection conn = dataSource.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(query);
-		){
-			pstmt.setInt(1, bno);
-			try(ResultSet rs = pstmt.executeQuery();) {
-				if(rs.next()) {
-					vo = BoardVO.builder()
-						.bno(rs.getInt("bno"))
-						.title(rs.getString("title"))
-						.content(rs.getString("content"))
-						.writer(rs.getString("writer"))
-						.writeDate(rs.getDate("writeDate"))
-						.imageFileName(rs.getString("imageFileName"))
-						.build();
+				Connection conn = dataSource.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(query);
+			){
+				pstmt.setInt(1, bno);
+				try(ResultSet rs = pstmt.executeQuery();) {
+					if(rs.next()) {
+						vo = NoticeVO.builder()
+							.bno(rs.getInt("bno"))
+							.title(rs.getString("title"))
+							.content(rs.getString("content"))
+							.writer(rs.getString("writer"))
+							.writeDate(rs.getDate("writeDate"))
+							.imageFileName(rs.getString("imageFileName"))
+							.build();
+					}
 				}
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		return vo;
 	}
-
+	
 	// 글수정
-	public void updateBoard(BoardVO vo) {
+	public void updateNotice(NoticeVO vo) {
 		String imageFileName = vo.getImageFileName();
 		int bno = vo.getBno();
-		String query = "update SHOP_BOARD set title=?, content=?";
+		String query = "update SHOP_NOTICE set title=?, content=?";
 		if(imageFileName!=null) { // 이미지 파일이 있을 때
 			query+=",imageFileName=? where bno=?";
 		} else { // 이미지 파일이 없을 때
@@ -141,8 +140,8 @@ public class BoardDao {
 	}
 	
 	// 삭제 처리
-	public void deleteBoard(int bno) {
-		String query = "delete from SHOP_BOARD where bno=?";
+	public void deleteNotice(int bno) {
+		String query = "delete from SHOP_NOTICE where bno=?";
 		try( 
 			Connection conn = dataSource.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement(query);
@@ -154,4 +153,6 @@ public class BoardDao {
 			e.printStackTrace();
 		}
 	}
+	
+	
 }

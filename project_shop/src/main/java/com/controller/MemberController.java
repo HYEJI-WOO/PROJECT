@@ -53,6 +53,7 @@ public class MemberController extends HttpServlet {
 		else if(pathInfo.equals("/join")) {
 			String id = request.getParameter("id");
 			String pwd = (String) request.getAttribute("pwd");
+			String pwdck = request.getParameter("pwdck");
 			String name = request.getParameter("name");
 			String email = request.getParameter("email");
 			String year = request.getParameter("year");
@@ -74,7 +75,6 @@ public class MemberController extends HttpServlet {
 			service.memberJoin(vo);
 			nextPage = "joinCheck";
 		}
-		 
 		
 		// 로그인폼
 		else if(pathInfo.equals("/loginForm")) {
