@@ -10,4 +10,8 @@ $(function(){
 				.attr("action", `${contextPath}/notice/detail`)
 				.submit();
 	});
+	
+	if(auth.grade != 'ROLE_ADMIN') {
+		$('.noticeWrite').hide();
+	}
 });

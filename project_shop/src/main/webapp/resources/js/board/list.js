@@ -10,4 +10,9 @@ $(function(){
 				.attr("action", `${contextPath}/board/detail`)
 				.submit();
 	});
+	
+	if(auth.grade != 'ROLE_ADMIN' && auth.grade != 'ROLE_MEMBER') {
+		$('.boardWrite').hide();
+	}
+	
 });

@@ -65,23 +65,23 @@ private DataSource dataSource;
 	}
 	
 	// 회원등급 조회
-		public MemberGrade findMemberGradeById(String id) {
-			MemberGrade grade = null;
-			String query = "select grade from shop_member where id=?";
-			try (
-				Connection conn = dataSource.getConnection();
-				PreparedStatement pstmt = conn.prepareStatement(query);	
-			){
-				pstmt.setString(1, id);
-				try(ResultSet rs = pstmt.executeQuery();) {
-					if(rs.next()) grade = MemberGrade.valueOf(rs.getString("grade"));
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
+	public MemberGrade findMemberGradeById(String id) {
+		MemberGrade grade = null;
+		String query = "select grade from shop_member where id=?";
+		try (
+			Connection conn = dataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(query);	
+		){
+			pstmt.setString(1, id);
+			try(ResultSet rs = pstmt.executeQuery();) {
+				if(rs.next()) grade = MemberGrade.valueOf(rs.getString("grade"));
 			}
-			return grade;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return grade;
+	}
 
 
 }

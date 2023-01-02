@@ -62,6 +62,12 @@ let replyService = {
 
 // 댓글 화면 렌더링
 function replyListRender(replyList) {
+	
+	if(auth.grade != 'ROLE_ADMIN') {
+		$('.replyForm').hide();
+		$('.replyBtn').hide();
+	}
+	
 	let output = '';
 	for(let r of replyList) {
 			output += 

@@ -59,8 +59,10 @@
 			</tr>
 			<tr>
 				<td colspan="4" class="text-center">
-					<c:if test="${auth.id eq board.writer or auth.grade eq 'ROLE_ADMIN'}">
+					<c:if test="${auth.id eq board.writer or (board.writer eq '관리자' and auth.grade eq 'ROLE_ADMIN')}">
 						<button type="button" class="btn btn-info toModForm">수정하기</button>
+					</c:if>
+					<c:if test="${auth.id eq board.writer or auth.grade eq 'ROLE_ADMIN'}">
 						<button type="button" class="btn btn-secondary remove">삭제</button>
 					</c:if>
 					<button type="button" class="btn btn-success toList">목록</button>
@@ -76,7 +78,7 @@
 			</tr>
 		</table>
 	</form>
-	
+
 	<div class="replyForm">
 		<table class="table">
 			<tr>
@@ -85,7 +87,6 @@
 						<li>댓글을 작성해주세요</li>
 						<li class="form-inline">작성자 : <input type="text" class="reply_writer form-control ml-2" value="${auth.id}" readonly="readonly"></li>
 					</ul>
-				</th>
 				</th>
 			</tr>
 			<tr>
@@ -108,29 +109,27 @@
 		  </div>
 		</div>
 	</div>
-</div>
-
-<div class="modal fade" id="feedback">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <h4 class="modal-title">댓글 등록</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        Modal body..
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">확인</button>
-      </div>
-
-    </div>
-  </div>
+	<div class="modal fade replyBtn" id="feedback">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	      <!-- Modal Header -->
+	      <div class="modal-header">
+	        <h4 class="modal-title">댓글 등록</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	
+	      <!-- Modal body -->
+	      <div class="modal-body">
+	        Modal body..
+	      </div>
+	
+	      <!-- Modal footer -->
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">확인</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </div>
 <%@ include file="../layout/footer.jsp" %>  

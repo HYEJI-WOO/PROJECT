@@ -73,6 +73,7 @@ public class MemberController extends HttpServlet {
 					.address(address)
 					.build();
 			service.memberJoin(vo);
+			request.setAttribute("id", id);
 			nextPage = "joinCheck";
 		}
 		
