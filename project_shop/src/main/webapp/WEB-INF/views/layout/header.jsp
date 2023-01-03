@@ -32,7 +32,7 @@
 <nav class="navbar navbar-expand-sm bg-light navbar-dark justify-content-between">
   <ul class="nav nav-pills">
     <li class="nav-item">
-      <a class="nav-link" href="#">SHOP</a>
+      <a class="nav-link" href="${contextPath}/product/list">SHOP</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="${contextPath}/board/list">Q&A</a>
