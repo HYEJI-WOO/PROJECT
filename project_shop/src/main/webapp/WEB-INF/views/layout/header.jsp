@@ -26,21 +26,22 @@
 </style>
 </head>
 <body>
-	<div>
-		<a href="${contextPath}/board/list"><img src="${contextPath}/resources/images/LOGO.jpg" alt="LOGO" width="150" /></a>
-	</div>
+
 <nav class="navbar navbar-expand-sm bg-light navbar-dark justify-content-between">
-  <ul class="nav nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" href="${contextPath}/product/list">SHOP</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="${contextPath}/board/list">Q&A</a>
-    </li>
-     <li class="nav-item">
-    <a class="nav-link" href="${contextPath}/notice/list">NOTICE</a>
-  </li>
+   <a href="${contextPath}/board/list"><img src="${contextPath}/resources/images/LOGO.jpg" alt="LOGO" width="150" /></a>
+	
+   <ul class="nav nav-pills">
+	    <li class="nav-item">
+	      <a class="nav-link" href="${contextPath}/product/list">SHOP</a>
+	    </li>
+	    <li class="nav-item">
+	      <a class="nav-link" href="${contextPath}/board/list">Q&A</a>
+	    </li>
+	    <li class="nav-item">
+	    <a class="nav-link" href="${contextPath}/notice/list">NOTICE</a>
+	    </li>
   </ul>
+  
   <!-- 로그인,로그아웃,회원가입 -->
   <ul class="navbar-nav">
 	<c:if test="${empty auth}"> <!-- 세션값이 없을 때 -->
@@ -67,5 +68,4 @@
     </li>
 	</c:if>
   </ul>
-
 </nav>
