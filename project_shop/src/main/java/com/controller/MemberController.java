@@ -129,7 +129,9 @@ public class MemberController extends HttpServlet {
 		
 		// 마이페이지
 		else if(pathInfo.equals("/myPage")) {
-			MemberVO info = service.memberInfo("pooh");
+			HttpSession session = request.getSession(false);
+			AuthVO auth = (AuthVO) session.getAttribute("auth");
+			MemberVO info = service.memberInfo(auth.getId());
 			request.setAttribute("info", info);
 			nextPage = "myPage";
 		}
