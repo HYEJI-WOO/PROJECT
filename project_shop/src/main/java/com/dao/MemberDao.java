@@ -3,10 +3,14 @@ package com.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.sql.DataSource;
 
 import com.common.ConnectionUtil;
+import com.domain.AuthVO;
 import com.domain.MemberVO;
 import com.domain.MemberVO.MemberGrade;
 
@@ -40,6 +44,40 @@ private DataSource dataSource;
 			e.printStackTrace();
 		}
 	}
+	
+	// 회원정보 조회
+	
+	public MemberVO findInfo(String id) {
+		MemberVO vo = null;
+		String query = "SELECT * FROM SHOP_MEMBER where id=?";
+		
+		try (
+				Connection conn = dataSource.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(query);
+			){
+				pstmt.setString(1, id);
+				try(ResultSet rs = pstmt.executeQuery();) {
+					if(rs.next()) {
+						vo = MemberVO.builder()
+								.id(rs.getString("id"))
+								.pwd(rs.getString("pwd"))
+								.name(rs.getString("name"))
+								.email(rs.getString("email"))
+								.year(rs.getString("year"))
+								.month(rs.getString("month"))
+								.day(rs.getString("day"))
+								.gender(rs.getString("gender"))
+								.address(rs.getString("address"))
+								.build();
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return vo;
+	}
+
+	
 	
 	// 로그인 체크
 	public boolean loginCheck(MemberVO vo) {
@@ -82,6 +120,7 @@ private DataSource dataSource;
 		}
 		return grade;
 	}
+
 
 
 }

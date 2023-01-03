@@ -26,7 +26,7 @@
 				</td>
 				<td>${b.writer}</td>
 				<td>${b.writeDate}</td>
-				<td>${b.replyCount != 0 ? 'O' : '    X'}</td>
+				<td>${b.replyCount != 0 ? 'O' : 'X'}</td>
 			</tr>
 			</c:forEach>
 		</table>

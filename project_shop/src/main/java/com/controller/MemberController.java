@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -43,6 +44,7 @@ public class MemberController extends HttpServlet {
 		
 		RequestDispatcher rd = null;
 		String nextPage = null;
+		
 		
 		// 회원가입 폼
 		if(pathInfo.equals("/joinForm")) {
@@ -90,6 +92,7 @@ public class MemberController extends HttpServlet {
 					.id(id)
 					.pwd(pwd)
 					.build();
+
 			
 			if(service.loginService(vo)) {
 				HttpSession session = request.getSession();
@@ -100,6 +103,7 @@ public class MemberController extends HttpServlet {
 				authVO.setId(vo.getId()); // 아이디
 				authVO.setGrade(grade); // 등급
 				session.setAttribute("auth", authVO); // 세션 데이터 바인딩
+				
 				
 				String userURI = (String) session.getAttribute("userURI");
 				if(userURI!=null) {
@@ -117,9 +121,17 @@ public class MemberController extends HttpServlet {
 		// 로그아웃 처리
 		else if(pathInfo.equals("/logout")) {
 			HttpSession session = request.getSession(false);
+			session = request.getSession(false);
 			session.removeAttribute("auth");
 			response.sendRedirect(contextPath+"/board");
 			return;
+		}
+		
+		// 마이페이지
+		else if(pathInfo.equals("/myPage")) {
+			MemberVO info = service.memberInfo("pooh");
+			request.setAttribute("info", info);
+			nextPage = "myPage";
 		}
 		
 		else {

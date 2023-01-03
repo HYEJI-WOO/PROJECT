@@ -1,6 +1,9 @@
 package com.service;
 
+import java.util.List;
+
 import com.dao.MemberDao;
+import com.domain.AuthVO;
 import com.domain.MemberVO;
 import com.domain.MemberVO.MemberGrade;
 
@@ -25,6 +28,9 @@ public class MemberService {
 	public MemberGrade getMemberGrade(String id) {
 		return dao.findMemberGradeById(id);
 	}
-	
+
+	public MemberVO memberInfo(String id) {
+		return dao.findInfo(id);
+	}
 	
 }
