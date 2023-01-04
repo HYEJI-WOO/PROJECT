@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>  
-<script src="${contextPath}/resources/js/product/list.js"></script> 
-<h1>ALL</h1>
+<h1>SALE</h1>
 <div class="container my-3">
    <ul class="nav nav-pills justify-content-center">
 	    <li class="nav-item">
@@ -63,5 +62,4 @@
  	</div>
 </form>
 </div>
-
 <%@ include file="../layout/footer.jsp" %> 

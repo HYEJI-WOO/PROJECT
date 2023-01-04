@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>  
-<script src="${contextPath}/resources/js/product/list.js"></script> 
-<h1>ALL</h1>
+<h1>BEST</h1>
 <div class="container my-3">
    <ul class="nav nav-pills justify-content-center">
 	    <li class="nav-item">
@@ -22,7 +21,6 @@
 		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/사과.jpg" alt="사과" width="200"/></a><br>
 		    	<td>사과</td><br>
 		    	<td>1500원</td><br><br>
-		    	
 			</div>
 		    <div class="col-sm-3">
 		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/바나나.jpg" alt="바나나" width="200" /></a><br>
@@ -63,5 +61,4 @@
  	</div>
 </form>
 </div>
-
 <%@ include file="../layout/footer.jsp" %> 
