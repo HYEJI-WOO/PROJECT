@@ -1,18 +1,14 @@
 $(function(){
 
-	$('.title').on('click',function(e){
-		let listForm = $('#listForm')
+	$('.name').on('click',function(e){
+		let productForm = $('#productForm')
 		e.preventDefault();
-		$('[name="bno"]').remove();
+		$('[name="name"]').remove();
 		//let bnoData = "<input type='hidden' name='bno' value='"+$(this).data('bno')+"'/>";
-		let bnoData = "<input type='hidden' name='bno' value='"+$(this).attr('href')+"'/>";
-		listForm.append(bnoData)
-				.attr("action", `${contextPath}/board/detail`)
+		let nameData = "<input type='hidden' name='name' value='"+$(this).attr('href')+"'/>";
+		productForm.append(nameData)
+				.attr("action", `${contextPath}/product/detail`)
 				.submit();
 	});
-	
-	if(auth.grade != 'ROLE_ADMIN' && auth.grade != 'ROLE_MEMBER') {
-		$('.boardWrite').hide();
-	}
 	
 });

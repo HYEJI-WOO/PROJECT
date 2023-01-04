@@ -23,7 +23,7 @@
 			<div class="row">
 				<c:forEach items="${list}" var="p">
 				<div class="col-sm-3">	
-					<div><a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/${p.name}.jpg" alt="${p.name}" width="200"/></div>
+					<div><a href="${p.name}" class="name"><img src="${contextPath}/resources/images/${p.name}.jpg" alt="${p.name}" width="200"/></div>
 					<div>${p.name}</a></div>
 					<div>${p.price}</div><br>
 				</div>
