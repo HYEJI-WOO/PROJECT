@@ -17,26 +17,7 @@
 <form id="listForm">
 	<div class="container" style="margin-top:30px">
 	 	<div class="row">
-		    <div class="col-sm-3">
-		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/사과.jpg" alt="사과" width="200"/></a><br>
-		    	<td>사과</td><br>
-		    	<td>1500원</td><br><br>
-			</div>
-		    <div class="col-sm-3">
-		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/바나나.jpg" alt="바나나" width="200" /></a><br>
-				<td>바나나</td><br>
-				<td>2000원</td><br><br>
-			</div>
-			<div class="col-sm-3">
-		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/크로와상.jpg" alt="크로와상" width="200" /></a><br>
-				<td>크로와상</td><br>
-				<td>3000원</td><br><br>
-			</div>
-			<div class="col-sm-3">
-		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/오렌지쥬스.jpg" alt="오렌지쥬스" width="200" /></a><br>
-				<td>오렌지쥬스</td><br>
-				<td>2000원</td><br><br>
-			</div>
+		    
 			<div class="col-sm-3">
 		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/채소세트.jpg" alt="채소세트" width="200" /></a><br>
 				<td>채소세트</td><br>

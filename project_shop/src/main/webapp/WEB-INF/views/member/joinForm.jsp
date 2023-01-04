@@ -8,11 +8,12 @@
 		<h1>Sign Up</h1>
 	</div>
 	
-	<form action="${contextPath}/member/join" method="post" id="submit" onsubmit="return test()">
+	<form action="${contextPath}/member/join" method="post" id="joinForm" onsubmit="return test()">
 		<div class="form-group">
 			<h5><b>아이디</b></h5>
 			<input type="text" class="form-control" name="id">
 			<button type="button" class="form-control idCheck">중복확인</button>
+
 		</div>
 		<div class="form-group">
 			<h5><b>비밀번호</b></h5>
@@ -20,7 +21,7 @@
 		</div>
 		<div class="form-group">
 			<h5><b>비밀번호 확인</b></h5>
-			<input type="password" class="form-control" name="pwck">
+			<input type="password" class="form-control" name="pwd">
 		</div>
 		<div class="form-group">
 			<h5><b>이름</b></h5>

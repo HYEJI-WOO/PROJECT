@@ -16,5 +16,9 @@ public class ProductService {
 		return dao.selectAll();
 	}
 
+	public ProductVO findProduct(String name) {
+		return dao.selectOne(name);
+	}
+
 
 }
