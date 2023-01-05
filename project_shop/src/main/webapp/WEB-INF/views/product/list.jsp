@@ -17,19 +17,40 @@
   </ul>
 </div>  
 
-<div class="container my-3">
-	<form id="productForm">
-		<div class="container" style="margin-top:30px">
-			<div class="row">
-				<c:forEach items="${list}" var="p">
-				<div class="col-sm-3">	
-					<div><a href="${p.name}" class="name"><img src="${contextPath}/resources/images/${p.name}.png" alt="${p.name}" width="200"/></div>
-					<div>${p.name}</a></div>
-					<div>${p.price}원</div><br>
+<div class="container" style="margin-top:30px; margin-left:120px;">
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>CATEGORY</h3><br>
+      <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#">채소/과일</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">정육/계란</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">커피/음료</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">간식/베이커리</a>
+        </li>
+      </ul>
+    </div>
+	<div class="container my-3">
+		<form id="productForm">
+			<div class="container" style="margin-top:30px">
+				<div class="row">
+					<c:forEach items="${list}" var="p">
+					<div class="col-sm-3">	
+						<div><a href="${p.name}" class="name"><img src="${contextPath}/resources/images/${p.name}.png" alt="${p.name}" width="200"/></div>
+						<div>${p.name}</a></div>
+						<div>${p.price}원</div><br>
+					</div>
+					</c:forEach>
 				</div>
-				</c:forEach>
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
+  </div>
 </div>
 <%@ include file="../layout/footer.jsp" %> 
