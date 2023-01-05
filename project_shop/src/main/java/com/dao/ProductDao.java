@@ -42,7 +42,8 @@ private DataSource dataSource;
 				}
 				return list;
 		}
-
+		
+		// 상품상세
 		public ProductVO selectOne(String name) {
 			ProductVO vo = null;
 			String query = "select * from SHOP_PRODUCT where name=?";
@@ -58,6 +59,8 @@ private DataSource dataSource;
 								.name(rs.getString("name"))
 								.price(rs.getString("price"))
 								.info(rs.getString("info"))
+								.weight(rs.getString("weight"))
+								.category(rs.getString("category"))
 								.build();
 						}
 					}
