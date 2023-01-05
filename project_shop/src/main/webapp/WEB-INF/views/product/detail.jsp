@@ -5,7 +5,7 @@
 <div class="container" style="margin-top:80px">
   <div class="row">
     <div class="col-sm-4">
-      <div class="fakeimg"><img src="${contextPath}/resources/images/${product.name}.png" alt="${product.name}" width="200" /><br></div>
+      <div class="fakeimg"><img src="${contextPath}/resources/images/${product.name}.png" alt="${product.name}" width="300" /><br></div>
     </div>
     <div class="col-sm-8">
       <h2><b>${product.name}</b></h2>
