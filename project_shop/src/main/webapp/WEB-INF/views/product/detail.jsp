@@ -16,6 +16,7 @@
       <p><b><font size="3em">${product.weight}</b></p>
       <font size="2em" color="grey">상품설명</font>
       <p><b>${product.info}</b></p>
+      <button type="button" class="btn btn-outline-info">Cart</button>
     </div>
   </div>
 </div>

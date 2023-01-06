@@ -4,7 +4,7 @@
 <%@ include file="../layout/header.jsp" %>  
 <script src="${contextPath}/resources/js/board/list.js"></script>  
 <h1>Q&A</h1>
-<a href="${contextPath}/board/writeForm" class="btn btn-dark boardWrite" style="float: right; margin-right: 150px">Write</a>
+<a href="${contextPath}/board/writeForm" class="btn btn-dark boardWrite" style="float: right; margin-right: 510px">Write</a>
 <br><br>
 <div class="container my-3">
 	<form id="listForm">
@@ -38,7 +38,7 @@
 		</c:if>
 	  
 	  <c:forEach begin="${p.startPage}" end="${p.endPage}" var="pageBtn">
-		  <li class="page-item ${pageBtn==param.pageNum?'active' : ''}">
+		  <li class="page-item ${pageBtn==param.pageNum ? 'active' : ''}">
 		 	 <a class="page-link" href="?pageNum=${pageBtn}">${pageBtn}</a>
 		  </li>
 	  </c:forEach>

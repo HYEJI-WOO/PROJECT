@@ -33,4 +33,9 @@ public class MemberService {
 		return dao.findInfo(id);
 	}
 	
+	// 회원수정
+	public void modMember(MemberVO vo) {
+		dao.updateMember(vo);
+	}
+	
 }

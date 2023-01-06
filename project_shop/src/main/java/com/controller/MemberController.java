@@ -137,6 +137,33 @@ public class MemberController extends HttpServlet {
 			nextPage = "myPage";
 		}
 		
+		// 회원정보수정
+		else if(pathInfo.equals("/modMember")) {
+			String id = request.getParameter("id");
+			String pwd = (String) request.getAttribute("pwd");
+			String email = request.getParameter("email");
+			String year = request.getParameter("year");
+			String month = request.getParameter("month");
+			String day = request.getParameter("day");
+			String gender = request.getParameter("gender");
+			String address = request.getParameter("address");
+			
+			MemberVO vo = MemberVO.builder()
+					.id(id)
+					.pwd(pwd)
+					.email(email)
+					.year(year)
+					.month(month)
+					.day(day)
+					.gender(gender)
+					.address(address)
+					.build();
+			service.modMember(vo);
+
+			response.sendRedirect(contextPath+"/board");
+			return;
+		}		
+		
 		else {
 			System.out.println("페이지를 찾을 수 없음");
 			return;

@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp" %>  
 <script src="${contextPath}/resources/js/notice/list.js"></script>  
 <h1>NOTICE</h1>
-<a href="${contextPath}/notice/writeForm" class="btn btn-dark noticeWrite"  style="float: right; margin-right: 150px">Write</a>
+<a href="${contextPath}/notice/writeForm" class="btn btn-dark noticeWrite"  style="float: right; margin-right: 510px">Write</a>
 <br><br>
 <div class="container my-3">
 	<form id="listForm">

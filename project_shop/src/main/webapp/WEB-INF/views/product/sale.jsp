@@ -18,15 +18,15 @@
 	<div class="container" style="margin-top:30px">
 	 	<div class="row">
 		    <div class="col-sm-3">
-		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/사과.jpg" alt="사과" width="200"/></a><br>
+		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/사과.png" alt="사과" width="200"/></a><br>
 		    	<td>사과</td><br>
-		    	<td>1500원</td><br><br>
+		    	<td>99000원</td><br><br>
 		    	
 			</div>
 		    <div class="col-sm-3">
-		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/바나나.jpg" alt="바나나" width="200" /></a><br>
+		    	<a href="${contextPath}/product/detail"><img src="${contextPath}/resources/images/바나나.png" alt="바나나" width="200" /></a><br>
 				<td>바나나</td><br>
-				<td>2000원</td><br><br>
+				<td>14750원</td><br><br>
 			</div>
 	
 	    </div>

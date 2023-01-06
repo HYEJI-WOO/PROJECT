@@ -11,7 +11,7 @@
 	<form action="${contextPath}/member/join" method="post" id="joinForm" onsubmit="return test()">
 		<div class="form-group">
 			<h5><b>아이디</b></h5>
-			<input type="text" class="form-control" name="id">
+			<input type="text" class="form-control" name="id"> 
 			<button type="button" class="form-control idCheck">중복확인</button>
 
 		</div>
