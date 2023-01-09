@@ -38,23 +38,29 @@
 		<div class="form-group">
 			<h5><b>생년월일</b></h5>
 			<div>
-               <div class="birth_day">
-                 <input type="text" name="year" class="form-control" placeholder="YYYY" value="${info.year}" readonly="readonly">
+               <div class="form-group">
+                 <input type="text" name="year" id="year" class="form-control" placeholder="YYYY" value="${info.year}" readonly="readonly">
                  <span class="bar"></span>
-                 <input type="text" name="month" class="form-control" placeholder="MM" value="${info.month}" readonly="readonly">
+                 <input type="text" name="month" id="month" class="form-control" placeholder="MM" value="${info.month}" readonly="readonly">
                  <span class="bar"></span>
-                 <input type="text" name="day" class="form-control" placeholder="DD" value="${info.day}" readonly="readonly">
+                 <input type="text" name="day" id="day" class="form-control" placeholder="DD" value="${info.day}" readonly="readonly">
                </div>
-             
              </div>
 		</div>
-		<div>
+		<div class="form-group">
 			<h5><b>성별</b></h5>
-			<input type="text" name="gender" class="form-control" value="${info.gender}" readonly="readonly">
+			<c:if test="${info.gender eq '남자'}">
+				남자<input type="radio" name="gender" value="남자" checked="checked"> 
+            	여자<input type="radio" name="gender" value="여자">
+			</c:if>
+			<c:if test="${info.gender eq '여자'}">
+				남자<input type="radio" name="gender" value="남자"> 
+            	여자<input type="radio" name="gender" value="여자" checked="checked">
+			</c:if>
 		</div>
 		<div class="form-group">
 			<h5><b>주소</b></h5> 
-			<input type="text" class="form-control" name="address" value="${info.address}" readonly="readonly"><br>
+			<input type="text" class="form-control" name="address" value="${info.address}" readonly="readonly">
 		</div>
 		<div>
 			<button type="button" class="btn btn-info float-right toModForm">수정하기</button>

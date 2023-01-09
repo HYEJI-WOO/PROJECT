@@ -1,3 +1,26 @@
+let idCheck = {
+	
+	idCheck : function(id) {
+		$.ajax({
+			type : 'get',
+			url : `${contextPath}/member/idCheck`,
+			data : {id : id}, 
+			success : function(result) {
+			   if(result == false){
+                    $("#result").text("사용가능한 아이디입니다.");
+               }else if(result == true){
+                    $("#result").text("이미 사용중인 아이디입니다.");
+               }
+			},
+			error : function() {
+				alert('아이디 조회 실패');
+			} 			
+		}); // ajax end
+	}
+	
+};
+
+
 $(function() {
 	$('.viewMode').hide();
 	
@@ -34,11 +57,14 @@ $(function() {
 			"action" : `${contextPath}/member/modMember`,
 			"method" : "post"
 		}).submit();
+		alert("수정이 완료되었습니다.")
 	});
 	
 	// 뷰모드
 	$('.backViewMode').on('click', function(){
-		$('input[name="id"],input[name="name"]').attr("readonly",true);
+		$('input[name="pwd"],input[name="email"]').attr("readonly",true);
+		$('input[name="year"],input[name="month"],input[name="day"]').attr("readonly",true);
+		$('input[name="gender"],input[name="address"]').attr("readonly",true);
 		$('.viewMode').hide();
 		$('.toModForm').show();
 		pwdObj.val(pwdVal); // 수정전 내용 복원
@@ -50,4 +76,42 @@ $(function() {
 		addressObj.val(addressVal);
 	});
 	
+	// 다시입력
+	$('.reset').on('click', function() {
+		document.getElementById('pwd_check_msg').innerHTML = ""; 
+	});
+	
 });
+
+function check_pwd(){  //비밀번호 확인 
+    var pwd = document.getElementById('pwd').value; 
+    var pwd_check = document.getElementById('pwd_check').value; 
+ 
+    if (pwd!=pwd_check) { 
+      document.getElementById('pwd_check_msg').innerHTML = "<font color=red>비밀번호가 일치하지 않습니다.</font>"; 
+    } 
+    else { 
+        document.getElementById('pwd_check_msg').innerHTML = "<font color=blue>비밀번호가 일치합니다.</font>"; 
+    } 
+    
+    if (pwd_check=="") { 
+      document.getElementById('pwd_check_msg').innerHTML = ""; 
+    } 
+ } 
+
+ 
+function checked(){  //form 유효성 검사 
+var pwd = document.getElementById('pwd'); 
+var pwd_check = document.getElementById('pwd_check'); 
+
+if (pwd.value != pwd_check.value) {  //비밀번호 확인 
+  alert("비밀번호가 일치하지 않습니다. 다시 입력해 주세요."); 
+  pwd_check.focus(); 
+  return false; 
+} 
+
+else { 
+  return true; 
+} 
+ 
+}

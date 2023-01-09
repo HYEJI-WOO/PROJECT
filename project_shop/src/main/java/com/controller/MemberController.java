@@ -1,10 +1,10 @@
 package com.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,16 +16,23 @@ import com.dao.MemberDao;
 import com.domain.AuthVO;
 import com.domain.MemberVO;
 import com.domain.MemberVO.MemberGrade;
+import com.google.gson.Gson;
 import com.service.MemberService;
 
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet {
 	
 	private MemberService service;
+	private MemberService sv;
+	private Gson gson;
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		service = new MemberService(new MemberDao());
+		ServletContext sc = config.getServletContext();
+		sv = (MemberService) sc.getAttribute("idCheck");
+		gson = new Gson();
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -160,9 +167,9 @@ public class MemberController extends HttpServlet {
 					.build();
 			service.modMember(vo);
 
-			response.sendRedirect(contextPath+"/board");
+			response.sendRedirect(contextPath+"/member/myPage");
 			return;
-		}		
+		} 
 		
 		else {
 			System.out.println("페이지를 찾을 수 없음");

@@ -28,7 +28,8 @@ public class MemberService {
 	public MemberGrade getMemberGrade(String id) {
 		return dao.findMemberGradeById(id);
 	}
-
+	
+	// 마이페이지
 	public MemberVO memberInfo(String id) {
 		return dao.findInfo(id);
 	}
