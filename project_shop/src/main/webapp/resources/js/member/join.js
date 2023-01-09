@@ -1,4 +1,14 @@
-let idCheck = {
+function open_Postcode(){  
+  new daum.Postcode({ 
+    oncomplete: function(data) { 
+ 
+       document.getElementById('postcode').value = data.zonecode; 
+       document.getElementById("road_address").value = data.roadAddress;
+  } 
+}).open(); 
+} 
+
+/*let idCheck = {
 	
 	idCheck : function(id) {
 		$.ajax({
@@ -18,7 +28,7 @@ let idCheck = {
 		}); // ajax end
 	}
 	
-};
+};*/
 
 
 $(function() {
@@ -28,10 +38,10 @@ $(function() {
 	
 	let pwdObj = $('input[name="pwd"]');
 	let emailObj = $('input[name="email"]');
-	let yearObj = $('input[name="year"]');
-	let monthObj = $('input[name="month"]');
-	let dayObj = $('input[name="day"]');
-	let genderObj = $('input[name="gender"]');
+	let yearObj = $('select[name="year"]');
+	let monthObj = $('select[name="month"]');
+	let dayObj = $('select[name="day"]');
+	let genderObj = $('select[name="gender"]');
 	let addressObj = $('input[name="address"]');
 	
 	let pwdVal = pwdObj.val();
@@ -44,27 +54,28 @@ $(function() {
 	
 	// 수정모드
 	$('.toModForm').on('click', function(){
+		
 		$('input[name="pwd"],input[name="email"]').attr("readonly",false);
-		$('input[name="year"],input[name="month"],input[name="day"]').attr("readonly",false);
-		$('input[name="gender"],input[name="address"]').attr("readonly",false);
+		$('select[name="year"],select[name="month"],select[name="day"]').attr("readonly",false);
+		$('select[name="gender"],input[name="address"]').attr("readonly",false);
 		$('.toModForm').hide();
 		$('.viewMode').show();
 	});
 	
-	// 수정 처리
+/*	// 수정 처리
 	$('.modify').on('click', function(){
 		viewForm.attr({
 			"action" : `${contextPath}/member/modMember`,
 			"method" : "post"
 		}).submit();
 		alert("수정이 완료되었습니다.")
-	});
+	});*/
 	
 	// 뷰모드
 	$('.backViewMode').on('click', function(){
 		$('input[name="pwd"],input[name="email"]').attr("readonly",true);
-		$('input[name="year"],input[name="month"],input[name="day"]').attr("readonly",true);
-		$('input[name="gender"],input[name="address"]').attr("readonly",true);
+		$('select[name="year"],select[name="month"],select[name="day"]').attr("readonly",true);
+		$('select[name="gender"],input[name="address"]').attr("readonly",true);
 		$('.viewMode').hide();
 		$('.toModForm').show();
 		pwdObj.val(pwdVal); // 수정전 내용 복원
@@ -110,8 +121,20 @@ if (pwd.value != pwd_check.value) {  //비밀번호 확인
   return false; 
 } 
 
+if (document.getElementById('postcode').value=="") { //주소 확인 
+  alert("주소를 입력해주세요"); 
+  document.getElementById('postcode_button').focus(); 
+  return false; 
+} 
+
+if(document.getElementById('addr').value=="") {
+	alert("상세주소를 입력해주세요")
+	document.getElementById('addr').focus();
+	return false; 
+}
+
 else { 
   return true; 
-} 
- 
 }
+} 
+
