@@ -70,9 +70,7 @@
 		</div>
 		<div class="form-group">
 			<h4>성별</h4>
-			<!-- 남자<input type="radio" class="form-control" name="gender" value="남자" checked="checked" style="width:70px; height:30px;font-size:20px;"> 
-            여자<input type="radio" class="form-control" name="gender" value="여자" style="width:70px; height:30px;font-size:20px;"> --> 
-			<select class="form-control" name="gender" style="width:300px; height:30px;font-size:13px;" required>
+			<select class="form-control" name="gender" class="form-control" style="width:100px; height:30px; font-size:13px;" required>
 				<option value="남자">남자</option>
 				<option value="여자">여자</option>
 			</select>
@@ -80,10 +78,9 @@
 		
 		<div class="form-group">
 			<h4>주소</h4>
-			<input type="text" id="postcode" placeholder="우편번호" readonly > 
-            <input type="button" id="postcode_button" onclick="open_Postcode()" value="우편번호 찾기"><br> 
-            <input type="text" name="address1" id="road_address" placeholder="도로 주소" readonly>
-            <input type="text" id="addr" name="address2" placeholder="상세 주소"><br> 
+            <input type="button" class="form-control" id="postcode_button" onclick="open_Postcode()" style="width:70px; height:30px;font-size:20px;" value="우편번호 찾기"><br> 
+            <input type="text" class="form-control" name="address1" id="road_address" placeholder="도로 주소" style="width:300px; height:30px;font-size:20px;"  readonly>
+            <input type="text" class="form-control" id="addr" name="address2" style="width:300px; height:30px;font-size:20px;" placeholder="상세 주소"><br> 
 		</div>
 	</div>
 	
