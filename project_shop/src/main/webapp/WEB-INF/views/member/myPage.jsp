@@ -24,6 +24,7 @@
 		<div class="form-group">
 			<h5><b>아이디</b></h5>
 			<input type="text" class="form-control" name="id" value="${info.id}" style="width:300px; height:30px;font-size:20px;" readonly="readonly">
+			<input type="button" class="form-control idCheckBtn" value="중복확인">
 		</div>
 		<div class="form-group">
 			<h5><b>이름</b></h5>

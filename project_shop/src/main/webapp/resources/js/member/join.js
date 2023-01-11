@@ -7,27 +7,26 @@ function open_Postcode(){
 }).open(); 
 } 
 
-/*let idCheck = {
-	
-	idCheck : function(id) {
+$(function() {
+	$('.checkId').on('click', function(){
+	var userId = document.getElementById('id').value; 
 		$.ajax({
 			type : 'get',
 			url : `${contextPath}/member/idCheck`,
-			data : {id : id}, 
+			data : {id : userId},
 			success : function(result) {
-			   if(result == false){
-                    $("#result").text("사용가능한 아이디입니다.");
-               }else if(result == true){
-                    $("#result").text("이미 사용중인 아이디입니다.");
-               }
+				if(result == 0) {
+					alert('중복');
+				} else {
+					alert('사용가능');
+				}
 			},
 			error : function() {
-				alert('아이디 조회 실패');
-			} 			
-		}); // ajax end
-	}
-	
-};*/
+				alert('중복확인 실패')
+			}
+		})
+	})
+})
 
 
 $(function() {

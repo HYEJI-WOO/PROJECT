@@ -24,6 +24,11 @@ public class MemberService {
 		return dao.loginCheck(vo);
 	}
 	
+	// 아이디 중복 체크
+	public int idCheckService(String id) {
+		return dao.idCheck(id);
+	}
+	
 	// 회원등급
 	public MemberGrade getMemberGrade(String id) {
 		return dao.findMemberGradeById(id);

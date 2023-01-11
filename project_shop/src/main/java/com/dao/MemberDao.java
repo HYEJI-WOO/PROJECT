@@ -97,6 +97,26 @@ private DataSource dataSource;
 		return result;
 	}
 	
+	// 아이디 중복확인
+	public int idCheck(String id) {
+		int idCheck = 1;
+		String query = "select decode(count(*),1,'1','0') from shop_member where id=?";
+		
+		try (
+			Connection conn = dataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(query);
+		){
+			pstmt.setString(1, id);
+			try(ResultSet rs = pstmt.executeQuery();){
+				if(rs.next()) idCheck = 0;  // 이미 존재하는 경우, 생성 불가능
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return idCheck;
+	}
+	
 	// 회원등급 조회
 	public MemberGrade findMemberGradeById(String id) {
 		MemberGrade grade = null;

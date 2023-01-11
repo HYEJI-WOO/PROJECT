@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -44,6 +45,8 @@ public class MemberController extends HttpServlet {
 	}
 	
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("application/json;charset=utf-8");
+		PrintWriter out = response.getWriter();
 		String pathInfo = request.getPathInfo();
 		String contextPath = request.getContextPath();
 		final String PRIFIX = "/WEB-INF/views/member/";
@@ -85,6 +88,15 @@ public class MemberController extends HttpServlet {
 			service.memberJoin(vo);
 			request.setAttribute("id", id);
 			nextPage = "joinCheck";
+		}
+		
+		else if(pathInfo.equals("/idCheck")) {
+			String id = request.getParameter("id");
+			System.out.println(id);
+			int result = service.idCheckService(id);
+			System.out.println(result);
+			out.print(gson.toJson(result));
+			return;
 		}
 		
 		// 로그인폼
