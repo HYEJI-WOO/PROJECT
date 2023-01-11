@@ -24,18 +24,14 @@ import com.service.MemberService;
 public class MemberController extends HttpServlet {
 	
 	private MemberService service;
-	private MemberService sv;
 	private Gson gson;
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		service = new MemberService(new MemberDao());
-		ServletContext sc = config.getServletContext();
-		sv = (MemberService) sc.getAttribute("idCheck");
 		gson = new Gson();
-		
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doHandle(request, response);
 	}
@@ -91,10 +87,11 @@ public class MemberController extends HttpServlet {
 		}
 		
 		else if(pathInfo.equals("/idCheck")) {
+			int result = 0;
 			String id = request.getParameter("id");
-			System.out.println(id);
-			int result = service.idCheckService(id);
-			System.out.println(result);
+			if(service.idCheckService(id)) {
+				result = 1;
+			}
 			out.print(gson.toJson(result));
 			return;
 		}
@@ -131,7 +128,7 @@ public class MemberController extends HttpServlet {
 					response.sendRedirect(userURI);
 					return;
 				}
-				response.sendRedirect(contextPath+"/board");
+				response.sendRedirect(contextPath+"/product");
 				return;
 			} else {
 				System.out.println("MemberController.login : 아이디 또는 비밀번호 불일치");
@@ -143,7 +140,7 @@ public class MemberController extends HttpServlet {
 			HttpSession session = request.getSession(false);
 			session = request.getSession(false);
 			session.removeAttribute("auth");
-			response.sendRedirect(contextPath+"/board");
+			response.sendRedirect(contextPath+"/product");
 			return;
 		}
 		

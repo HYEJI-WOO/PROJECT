@@ -25,7 +25,7 @@ public class MemberService {
 	}
 	
 	// 아이디 중복 체크
-	public int idCheckService(String id) {
+	public boolean idCheckService(String id) {
 		return dao.idCheck(id);
 	}
 	

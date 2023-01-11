@@ -98,9 +98,9 @@ private DataSource dataSource;
 	}
 	
 	// 아이디 중복확인
-	public int idCheck(String id) {
-		int idCheck = 1;
-		String query = "select decode(count(*),1,'1','0') from shop_member where id=?";
+	public boolean idCheck(String id) {
+		boolean result = false;
+		String query = "select decode(count(*),1,'TRUE','FALSE') as result from shop_member where id=?";
 		
 		try (
 			Connection conn = dataSource.getConnection();
@@ -108,13 +108,15 @@ private DataSource dataSource;
 		){
 			pstmt.setString(1, id);
 			try(ResultSet rs = pstmt.executeQuery();){
-				if(rs.next()) idCheck = 0;  // 이미 존재하는 경우, 생성 불가능
+				if(rs.next()) {
+					result = Boolean.parseBoolean(rs.getString("result"));
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return idCheck;
+		return result;
 	}
 	
 	// 회원등급 조회

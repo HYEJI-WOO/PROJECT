@@ -12,16 +12,19 @@
 		</div>
 		<div class="form-group">
 			<h4>아이디</h4>
-			<input type="text" class="form-control" name="id" id="id" value="" pattern="[a-zA-Z0-9]{4,12}" title="4~12자의 영문 대소문자, 숫자만 입력하세요"  style="width:300px; height:30px;font-size:20px;" required>
-			<button type="button" class="form-control checkId" style="width:100px; height:30px;font-size:13px;">중복확인</button>
+			<input type="text" class="form-control" name="id" id="id" value="" maxlength="12" onkeyup="check_id()" pattern="[a-zA-Z0-9]{4,12}" title="4~12자의 영문 대소문자, 숫자만 입력하세요"  style="width:300px; height:30px;font-size:20px;" required>
+			<input type="button" class="form-control checkId" style="width:100px; height:30px;font-size:13px;" value="중복확인">
+			
+			<!-- 아이디 중복 체크 여부 -->
+			<input type="text" id="idDuplication" name="idDuplication" value=""/>
 		</div>
 		<div class="form-group">	
 			<h4>비밀번호</h4>
-			<input type="password" class="form-control" id="pwd" name="pwd" onkeyup="check_pwd()" value="" maxlength="12" pattern="[a-zA-Z0-9!~^]{4,12}" title="4~12자의 영문 대소문자, 숫자, 특수문자(!~^)만 입력하세요." style="width:300px; height:30px;font-size:20px;" required> 
+			<input type="password" class="form-control" id="pwd" name="pwd" onkeyup="check_pwd()" value="" maxlength="16" pattern="[a-zA-Z0-9!~^]{4,16}" title="4~16자의 영문 대소문자, 숫자, 특수문자(!~^)만 입력하세요." style="width:300px; height:30px;font-size:20px;" required> 
 		</div>
 		<div class="form-group">
 			<h4>비밀번호 확인</h4>
-			<input type="password" class="form-control" id="pwd_check" name="pwd_check" onkeyup="check_pwd()" value="" maxlength="12" style="width:300px; height:30px;font-size:20px;" required> 
+			<input type="password" class="form-control" id="pwd_check" name="pwd_check" onkeyup="check_pwd()" value="" maxlength="16" style="width:300px; height:30px;font-size:20px;" required> 
             <span id="pwd_check_msg"></span>
 		</div>
 		<div class="form-group">
