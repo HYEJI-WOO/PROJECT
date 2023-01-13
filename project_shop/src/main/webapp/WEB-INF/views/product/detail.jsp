@@ -16,9 +16,19 @@
       <p><b><font size="3em">${product.weight}</b></p>
       <font size="2em" color="grey">상품설명</font>
       <p><b>${product.info}</b></p>
-      <button type="button" class="btn btn-outline-info">Cart</button>
+      <button type="button" class="btn btn-outline-info cartBtn">Cart</button>
     </div>
   </div>
 </div>
 
 <%@ include file="../layout/footer.jsp" %> 
+<script>
+$(function(){
+	$('.cartBtn').on('click', function() {
+		var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
+		if(check) {
+			location.assign("/project_shop/member/cart")
+		}
+	})
+})
+</script> 

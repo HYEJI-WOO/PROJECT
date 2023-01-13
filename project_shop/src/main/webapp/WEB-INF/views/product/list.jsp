@@ -41,12 +41,13 @@
 			<div class="row">
 				<c:forEach items="${list}" var="p">
 				<div class="col-sm-4">	
+					<input type="hidden" class="pno" value="${p.pno}">
 					<div><a href="${p.name}" class="name"><img src="${contextPath}/resources/images/${p.name}.png" alt="${p.name}" width="200"/></div>
-					
 					<div>${p.name}</a></div>
 					<div>${p.price}원</div>
 					
-					<button type="button" class="btn btn-outline-info" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
+					<button type="button" class="btn btn-outline-info cartBtn" value="${p.name}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
+					
 				</div>
 				</c:forEach>
 			</div>
@@ -55,3 +56,15 @@
   </div>
 </div>
 <%@ include file="../layout/footer.jsp" %> 
+
+<!-- <script>
+$(function(){
+	$('.cartBtn').on('click', function() {
+		var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
+		if(check) {
+			location.assign("/project_shop/member/cart")
+		}
+	})
+})
+</script>  -->
+

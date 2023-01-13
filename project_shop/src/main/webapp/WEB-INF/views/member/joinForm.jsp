@@ -16,7 +16,7 @@
 			<input type="button" class="form-control checkId" style="width:100px; height:30px;font-size:13px;" value="중복확인">
 			
 			<!-- 아이디 중복 체크 여부 -->
-			<input type="text" id="idDuplication" name="idDuplication" value=""/>
+			<input type="hidden" id="idDuplication" name="idDuplication" value=""/>
 		</div>
 		<div class="form-group">	
 			<h4>비밀번호</h4>
@@ -83,7 +83,7 @@
 			<h4>주소</h4>
             <input type="button" class="form-control btn-primary" id="postcode_button" onclick="open_Postcode()" style="width:100px; height:30px; font-size:12px;" value="우편번호 찾기"><br> 
             <input type="text" class="form-control" name="address1" id="road_address" placeholder="도로 주소" style="width:300px; height:30px;font-size:20px;"  readonly>
-            <input type="text" class="form-control" id="addr" name="address2" style="width:300px; height:30px;font-size:20px;" placeholder="상세 주소"><br> 
+            <input type="text" class="form-control" id="addr" name="address2" style="width:300px; height:30px;font-size:20px;" placeholder="상세 주소" required><br> 
 		</div>
 	</div>
 	
