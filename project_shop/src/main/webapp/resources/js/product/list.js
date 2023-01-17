@@ -1,7 +1,7 @@
 $(function(){
-	let productForm = $('#productForm')
 
 	$('.name').on('click',function(e){
+		let productForm = $('#productForm')
 		e.preventDefault();
 		$('[name="name"]').remove();
 		//let bnoData = "<input type='hidden' name='bno' value='"+$(this).data('bno')+"'/>";
@@ -13,7 +13,25 @@ $(function(){
 	
 	$('.cartBtn').on('click', function() {
 		let data = $(this).attr('value');
-		alert(data);
+		if(auth.id != null && auth.id != '') {
+			$.ajax({
+				type : 'post',
+				url : `${contextPath}/cart/addCart`,
+				data : {pno : data, id : auth.id},
+				success : function(result) {
+					var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
+					if(check) {
+						location.assign("/project_shop/cart/cartIn")
+					}
+				},
+				error : function() {
+					alert('장바구니 담기 실패')
+				}
+			})
+		} else {
+			alert('로그인 후 이용가능합니다.')
+			location.assign("/project_shop/member/loginForm")
+		}
 		
 	})
 	

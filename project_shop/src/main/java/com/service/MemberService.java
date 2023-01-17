@@ -43,5 +43,7 @@ public class MemberService {
 	public void modMember(MemberVO vo) {
 		dao.updateMember(vo);
 	}
+
+	
 	
 }

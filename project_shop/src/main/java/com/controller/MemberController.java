@@ -153,10 +153,7 @@ public class MemberController extends HttpServlet {
 			nextPage = "myPage";
 		}
 		
-		// 장바구니 
-		else if(pathInfo.equals("/cart")) {
-			nextPage = "cart";
-		}
+		
 		
 		// 주문내역
 		else if(pathInfo.equals("/orderList")) {

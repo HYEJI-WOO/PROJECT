@@ -46,7 +46,7 @@
 					<div>${p.name}</a></div>
 					<div>${p.price}원</div>
 					
-					<button type="button" class="btn btn-outline-info cartBtn" value="${p.name}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
+					<button type="button" class="btn btn-outline-info cartBtn" value="${p.pno}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
 					
 				</div>
 				</c:forEach>
@@ -56,15 +56,3 @@
   </div>
 </div>
 <%@ include file="../layout/footer.jsp" %> 
-
-<!-- <script>
-$(function(){
-	$('.cartBtn').on('click', function() {
-		var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
-		if(check) {
-			location.assign("/project_shop/member/cart")
-		}
-	})
-})
-</script>  -->
-

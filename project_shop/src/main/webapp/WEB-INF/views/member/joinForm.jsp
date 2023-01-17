@@ -17,6 +17,7 @@
 			
 			<!-- 아이디 중복 체크 여부 -->
 			<input type="hidden" id="idDuplication" name="idDuplication" value=""/>
+			<span id="id_check_msg"></span>
 		</div>
 		<div class="form-group">	
 			<h4>비밀번호</h4>

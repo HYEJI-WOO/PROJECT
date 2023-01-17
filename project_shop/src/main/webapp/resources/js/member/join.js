@@ -10,7 +10,8 @@ function open_Postcode(){
 $(function() {
 	$('.checkId').on('click', function(){
 	var userId = document.getElementById('id').value;
-	if(userId != '') {
+	var idReg = /^[A-za-z0-9]{4,12}$/g;
+	if(userId != '' && idReg.test(userId) ) {
 		$.ajax({
 			type : 'get',
 			url : `${contextPath}/member/idCheck`,
@@ -18,13 +19,17 @@ $(function() {
 			success : function(result) {
 				if(result == 1 && userId.length > 3) {
 					/*document.getElementById('id_check_msg').innerHTML = "<font color=red>이미 사용중인 아이디 입니다. </font>";*/
-					alert('이미 사용중인 아이디입니다.')
-					document.getElementById('id').value = "";
+					// alert('이미 사용중인 아이디입니다.')
+					document.getElementById('id_check_msg').innerHTML = "<font color=red>이미 사용중인 아이디입니다.</font>";
+					// document.getElementById('id').value = "";
 					document.getElementById('idDuplication').value = "idUncheck";
 				} else if(result == 0 && userId.length > 3) {
-					alert('사용할 수 있는 아이디입니다.');
+					// alert('사용할 수 있는 아이디입니다.');
+					document.getElementById('id_check_msg').innerHTML = "<font color=blue>사용할 수 있는 아이디입니다.</font>";
 					document.getElementById('idDuplication').value = "idChecked";
-				} else {
+				} else if(!idReg.test(userId.val())) {
+					alert('오류')
+				}else {
 					alert('네 자리 이상 작성해주세요. ');
 					document.getElementById('idDuplication').value = "idUncheck";
 				} 
@@ -33,6 +38,10 @@ $(function() {
 				alert('중복확인 실패')
 			}
 		})
+		} else if(!idReg.test(userId)){
+			document.getElementById('id_check_msg').innerHTML = "<font color=red>4~12자의 영문 대소문자, 숫자만 입력하세요.</font>";
+			document.getElementById('idDuplication').value = "idUncheck";
+			
 		} else {
 			alert('아이디를 입력하세요')
 			document.getElementById('id_check_msg').innerHTML = "";
@@ -138,6 +147,7 @@ function check_id(){  //아이디 중복 확인
     
 	$("#id").on("propertychange change keyup paste input", function(){
 		document.getElementById('idDuplication').value = "idUncheck";
+		document.getElementById('id_check_msg').innerHTML = "";
 	});     
 	     
 }
