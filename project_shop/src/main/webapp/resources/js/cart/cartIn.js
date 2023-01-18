@@ -31,11 +31,12 @@ $(function(){
 	}) 
 	
 	$('.cartCheckBox').on('click', function() {
-		let data = $(this).attr('value');
-		alert(data);
+
+		var checkBoxArr = [];
+		$("input[name=chk]:checked").each(function(i){
+			checkBoxArr.push($(this).val());
+		}) 
+
 	})
-	
-	
-	
 	
 });	

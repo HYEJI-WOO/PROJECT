@@ -35,7 +35,7 @@
 					<td><fmt:formatNumber value="${b.price}" pattern="#,###원"/></td>
 					<td>${b.cart_cnt}</td>
 					<td><fmt:formatNumber value="${b.price * b.cart_cnt}" pattern="#,###원"/></td>
-					<td><input type="checkbox" class="cartCheckBox" value="${b.name}"></td>
+					<td><input type="checkbox" name="chk" class="cartCheckBox" value="${b.pno}"></td>
 				</tr>
 				<c:set var="total" value="${total + b.price*b.cart_cnt}"/>
 				</c:forEach>

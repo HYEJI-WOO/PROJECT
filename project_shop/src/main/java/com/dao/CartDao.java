@@ -78,7 +78,7 @@ public class CartDao {
 
 	public List<CartVO> cartIn(String id) {
 		List<CartVO> list = new ArrayList();
-		String query = "select M.id, p.Name, c.CART_CNT, p.price from shop_cart C inner join shop_product P on P.pno = C.pno inner join shop_member M on C.ID = M.ID where m.id = ?";
+		String query = "select M.id, p.pno, p.Name, c.CART_CNT, p.price from shop_cart C inner join shop_product P on P.pno = C.pno inner join shop_member M on C.ID = M.ID where m.id = ?";
 		try (
 				Connection conn = dataSource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(query);
@@ -88,6 +88,7 @@ public class CartDao {
 					while(rs.next()) {
 						CartVO vo = CartVO.builder()
 								.id(rs.getString("id"))
+								.pno(rs.getInt("pno"))
 								.name(rs.getString("name"))
 								.cart_cnt(rs.getInt("cart_cnt"))
 								.price(rs.getString("price"))
