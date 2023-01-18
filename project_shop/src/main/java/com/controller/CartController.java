@@ -73,6 +73,14 @@ public class CartController extends HttpServlet {
 			nextPage = "cartIn";
 		}
 		
+		else if(pathInfo.equals("/delAllCart")) {
+			String id = request.getParameter("id");
+			service.delAllCart(id);
+			String result = "장바구니 삭제 성공";
+			out.print(gson.toJson(result));
+			return;
+		}
+		
 		else {
 			System.out.println("페이지를 찾을 수 없음");
 			return;

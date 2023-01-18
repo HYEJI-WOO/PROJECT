@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp" %>
+<script src="${contextPath}/resources/js/reply/ProductReply.js"></script>
+<script src="${contextPath}/resources/js/product/list.js"></script> 
+<script src="${contextPath}/resources/js/product/detail.js"></script>
 
 <div class="container" style="margin-top:80px">
   <div class="row">
@@ -16,19 +19,68 @@
       <p><b><font size="3em">${product.weight}</b></p>
       <font size="2em" color="grey">상품설명</font>
       <p><b>${product.info}</b></p>
-      <button type="button" class="btn btn-outline-info cartBtn">Cart</button>
+      <button type="button" class="btn btn-outline-info cartBtn" value="${product.pno}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
     </div>
   </div>
 </div>
 
+<input type="hidden" name="pno" value="${product.pno}">
+
+<div class="productReplyForm">
+		<table class="table">
+			<tr>
+				<th colspan="2">
+					<ul class="d-flex justify-content-between">
+						<li>댓글을 작성해주세요</li>
+						<li class="form-inline">작성자 : <input type="text" class="reply_writer form-control ml-2" value="${auth.id}" readonly="readonly"></li>
+					</ul>
+				</th>
+			</tr>
+			<tr>
+				<td class="col-1 text-center"><b>내용</b></td>
+				<td>
+					<textarea rows="5" class="form-control reply_content"></textarea>
+				</td>
+			</tr>
+			<tr class="text-right">
+				<td colspan="2"><button class="btn btn-light reply_write">댓글등록</button></td>
+			</tr>
+		</table>
+	</div>
+	<div class="productReplyList">
+		<div class="card">
+		  <div class="card-header bg-dark text-white">댓글목록</div>
+		  <div class="card-body">
+		  	<ul class="list-group list-group-flush">
+		  		<li>여기 있음</li>
+			</ul>
+			
+		  </div>
+		</div>
+	</div>
+	<div class="modal fade productReplyBtn" id="reply">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	
+	      <!-- Modal Header -->
+	      <div class="modal-header">
+	        <h4 class="modal-title">댓글 등록</h4>
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	
+	      <!-- Modal body -->
+	      <div class="modal-body">
+	        Modal body..
+	      </div>
+	
+	      <!-- Modal footer -->
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-danger" data-dismiss="modal">확인</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+
+
 <%@ include file="../layout/footer.jsp" %> 
-<script>
-$(function(){
-	$('.cartBtn').on('click', function() {
-		var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
-		if(check) {
-			location.assign("/project_shop/member/cart")
-		}
-	})
-})
-</script> 

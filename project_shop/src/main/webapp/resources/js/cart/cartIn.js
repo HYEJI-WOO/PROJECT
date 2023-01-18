@@ -10,4 +10,32 @@ $(function(){
 				.attr("action", `${contextPath}/product/detail`)
 				.submit();
 	});
+	
+	$('.delAllCart').on('click', function() {
+		$.ajax({
+			type : 'post',
+			url : `${contextPath}/cart/delAllCart`,
+			data : {id : auth.id},
+			success : function() {
+				alert("모든 상품이 삭제되었습니다.")
+				location.assign("/project_shop/cart/cartIn")
+			},
+			error : function() {
+				alert("삭제 실패")
+			}
+		})
+	});
+	
+	$('.delCheckCart').on('click', function() {
+		
+	}) 
+	
+	$('.cartCheckBox').on('click', function() {
+		let data = $(this).attr('value');
+		alert(data);
+	})
+	
+	
+	
+	
 });	

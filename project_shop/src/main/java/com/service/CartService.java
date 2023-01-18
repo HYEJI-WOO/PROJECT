@@ -22,4 +22,9 @@ public class CartService {
 	public List<CartVO> cartIn(String id) {
 		return dao.cartIn(id);
 	}
+
+	public void delAllCart(String id) {
+		dao.delAllCart(id);
+		
+	}
 }

@@ -18,7 +18,7 @@ $(function(){
 				type : 'post',
 				url : `${contextPath}/cart/addCart`,
 				data : {pno : data, id : auth.id},
-				success : function(result) {
+				success : function() {
 					var check = confirm("상품이 장바구니에 담겼습니다. 확인하시겠습니까?");
 					if(check) {
 						location.assign("/project_shop/cart/cartIn")

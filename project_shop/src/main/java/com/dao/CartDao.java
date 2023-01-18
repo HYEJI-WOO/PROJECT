@@ -101,4 +101,19 @@ public class CartDao {
 			}
 			return list;
 	}
+
+	
+	public void delAllCart(String id) {
+		String query = "delete from shop_cart where id=?";
+		try( 
+			Connection conn = dataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(query);
+				
+		){
+			pstmt.setString(1, id);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
