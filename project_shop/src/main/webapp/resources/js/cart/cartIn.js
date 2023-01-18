@@ -1,4 +1,6 @@
 $(function(){
+	
+	var checkBoxArr = [];
 
 	$('.name').on('click',function(e){
 		let cartForm = $('#cartForm')
@@ -27,16 +29,26 @@ $(function(){
 	});
 	
 	$('.delCheckCart').on('click', function() {
+		console.log(checkBoxArr);
+/*		$.ajax({
+			type : 'post',
+			url : `${contextPath}/cart/delCheckCart`,
+			data : {id : auth.id, data : checkBoxArr},
+			success : function() {
+				alert("모든 상품이 삭제되었습니다.")
+				location.assign("/project_shop/cart/cartIn")
+			},
+			error : function() {
+				alert("삭제 실패")
+			}
+		})*/
 		
-	}) 
+	}); 
 	
 	$('.cartCheckBox').on('click', function() {
-
-		var checkBoxArr = [];
 		$("input[name=chk]:checked").each(function(i){
 			checkBoxArr.push($(this).val());
-		}) 
-
+		})
 	})
 	
 });	

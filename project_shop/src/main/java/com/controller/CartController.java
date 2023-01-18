@@ -81,6 +81,12 @@ public class CartController extends HttpServlet {
 			return;
 		}
 		
+		else if(pathInfo.equals("/delCheckCart")) {
+			String list = request.getParameter("data");
+			System.out.println(list);
+			
+		}
+		
 		else {
 			System.out.println("페이지를 찾을 수 없음");
 			return;
