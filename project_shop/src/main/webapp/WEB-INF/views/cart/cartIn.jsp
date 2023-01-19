@@ -22,13 +22,13 @@
 					<th>가격</th>
 					<th>수량</th>
 					<th>합계</th>
-					<th>선택</th>
+					<th><input type="checkbox" class="cartAllCheckBox" onclick="checkAll()"></th>
 				</tr>
 				<c:forEach items="${info}" var="b">
 				<tr>	
 					<td>
 						<c:set var="cno" value="${cno+1}"/>
-						<c:out value="${cno}"></c:out>
+						<c:out value="${cno}"/>
 					</td>
 					<td><a href="${b.name}" class="name"><img src="${contextPath}/resources/images/${b.name}.png" alt="${b.name}" width="100"/></a></td>
 					<td><a href="${b.name}" class="name">${b.name}</a></td>

@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -82,8 +83,14 @@ public class CartController extends HttpServlet {
 		}
 		
 		else if(pathInfo.equals("/delCheckCart")) {
-			String list = request.getParameter("data");
-			System.out.println(list);
+			String id = request.getParameter("id");
+			String data = request.getParameter("data");
+			String[] list = data.split(",");
+			service.delCheckCart(id, list);
+			
+			String result = "장바구니 삭제 성공";
+			out.print(gson.toJson(result));
+			return;
 			
 		}
 		

@@ -1,6 +1,5 @@
 $(function(){
 	
-	var checkBoxArr = [];
 
 	$('.name').on('click',function(e){
 		let cartForm = $('#cartForm')
@@ -28,27 +27,84 @@ $(function(){
 		})
 	});
 	
-	$('.delCheckCart').on('click', function() {
-		console.log(checkBoxArr);
-/*		$.ajax({
+	let pnoSet = new Set();
+	$('.cartCheckBox').on('change', function(){
+		let pno = $(this).val();
+		let isChecked = $(this).prop('checked')
+		if(isChecked) {
+			pnoSet.add(pno)
+		} else {
+			pnoSet.delete(pno)
+		}
+		console.log(pnoSet)
+	});
+	
+	$('.delCheckCart').on('click', function(){
+		if(pnoSet.size<=0) {
+			alert('삭제할 상품을 선택하세요');
+			return;
+		}
+
+		let pnoListStr = Array.from(pnoSet).join()
+			
+		$.ajax({
 			type : 'post',
 			url : `${contextPath}/cart/delCheckCart`,
-			data : {id : auth.id, data : checkBoxArr},
+			data : {data : pnoListStr, id : auth.id},
 			success : function() {
-				alert("모든 상품이 삭제되었습니다.")
+				alert('선택한 상품이 삭제되었습니다.')
 				location.assign("/project_shop/cart/cartIn")
 			},
 			error : function() {
-				alert("삭제 실패")
+				alert('장바구니 삭제 실패')
 			}
-		})*/
-		
-	}); 
-	
-	$('.cartCheckBox').on('click', function() {
-		$("input[name=chk]:checked").each(function(i){
-			checkBoxArr.push($(this).val());
-		})
-	})
+		})			
+	})	
+
 	
 });	
+
+function checkAll() {
+	let pnoSet = new Set();
+	
+	let pno = $('.cartCheckBox').val();
+	
+	
+	if($(".cartAllCheckBox").is(':checked')) {
+		$("input[name=chk]").each(function(i,e){
+			$(e).prop("checked", true);
+			pnoSet.add($(e).val());
+			console.log(e);
+		})
+		
+	} else {
+		$("input[name=chk]").prop("checked", false);
+		pnoSet.delete(pno)
+	}
+	console.log(pnoSet)
+}
+
+
+
+
+
+$(document).on("click", "input:checkbox[name=chk]", function() {
+	
+	var chks = document.getElementsByName("chk");
+	var chksChecked = 0;
+	
+	for(var i=0; i<chks.length; i++) {
+		var chk = chks[i];
+		
+		if(chk.checked) {
+			chksChecked++;
+		}
+	}
+	
+	if(chks.length == chksChecked){
+		$(".cartAllCheckBox").prop("checked", true);
+	}else{
+		$(".cartAllCheckBox").prop("checked",false);
+	}
+	
+});

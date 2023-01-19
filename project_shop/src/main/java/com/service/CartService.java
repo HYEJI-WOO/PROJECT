@@ -25,6 +25,11 @@ public class CartService {
 
 	public void delAllCart(String id) {
 		dao.delAllCart(id);
-		
 	}
+	
+	public void delCheckCart(String id, String[] list) {
+		dao.delCheckCart(id, list);
+	}
+	
+	
 }

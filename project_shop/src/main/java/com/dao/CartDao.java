@@ -117,4 +117,21 @@ public class CartDao {
 			e.printStackTrace();
 		}
 	}
+
+	public void delCheckCart(String id, String[] list) {
+		String query = "delete from shop_cart where id=? and pno=?";
+		try( 
+			Connection conn = dataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(query);
+		){
+			for(int i=0; i<list.length; i++) {
+				int pno = Integer.parseInt(list[i]);
+				pstmt.setString(1, id);
+				pstmt.setInt(2, pno);
+				pstmt.executeUpdate();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
