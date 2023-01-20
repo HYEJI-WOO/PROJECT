@@ -3,7 +3,7 @@
     
 <%@ include file="../layout/header.jsp" %>  
 <script src="${contextPath}/resources/js/cart/cartIn.js"></script> 
-	<h4>장바구니</h4>
+	<h1>CART</h1>
 <div class="container my-3">
 	<form id="cartForm">
 		<c:if test="${empty info}">
@@ -35,14 +35,18 @@
 					<td><fmt:formatNumber value="${b.price}" pattern="#,###원"/></td>
 					<td>${b.cart_cnt}</td>
 					<td><fmt:formatNumber value="${b.price * b.cart_cnt}" pattern="#,###원"/></td>
-					<td><input type="checkbox" name="chk" class="cartCheckBox" value="${b.pno}"></td>
+					<td>
+						<input type="hidden" value="${b.price * b.cart_cnt}" name="hdPrice" class="hdPrice">
+						<input type="checkbox" name="chk" class="cartCheckBox" value="${b.pno}">
+					</td>
 				</tr>
 				<c:set var="total" value="${total + b.price*b.cart_cnt}"/>
 				</c:forEach>
 			</table>
 			<div class="form-group" align="right">
-				합계금액 : <input type="text" class="form-control" value="<fmt:formatNumber value="${total}" pattern="#,###원"/>" style="width:130px; height:30px;font-size:15px;text-align:right;font-weight : bold ;" readonly="readonly">
-			</div>
+				합계금액 : <input type="text" name="totalPrice" class="form-control totalPrice" value="<fmt:formatNumber value="${total}" pattern="#,###원"/>" style="width:130px; height:30px;font-size:15px;text-align:right;font-weight : bold ;" readonly="readonly">
+				<input type="hidden" class="hdTotal" value="${total}">
+			</div> 
 			<div>
 				<button type="button" class="btn btn-info float-right toBuyForm">주문하기</button>
 			</div>
