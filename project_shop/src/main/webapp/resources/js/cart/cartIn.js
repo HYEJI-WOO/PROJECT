@@ -49,8 +49,12 @@ $(function(){
 		})
 		
 	} else {
-		$("input[name=chk]").prop("checked", false);
-		pnoSet.delete(pno)
+		/*$("input[name=chk]").prop("checked", false);*/
+		$("input[name=chk]").each(function(i,e){
+			$(e).prop("checked", false);
+			pnoSet.delete($(e).val());
+		})
+		/*pnoSet.delete(pno)*/
 	}
 	console.log(pnoSet)
 	})
