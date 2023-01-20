@@ -1,5 +1,7 @@
 $(function(){
 	
+	
+	
 	$('.c_plus').on('click', function(){
 		var num = $(this).prev().val()*1+1;
 		$(this).prev().val(num);
@@ -18,13 +20,29 @@ $(function(){
 		})
 	})
 		
-	$('.c_minus').click(function(){ 
-		var n = 0
-	    var num = $(this).next().val()*1-1;
+	$('.c_minus').on('click', function(){
+	    var num = $(this).next().val()-1;
 	    if(num<=1) {
-		num = 1;
-	}	
-	$(this).next().val(num);
+			num = 1;
+		}
+	    $(this).next().val(num);
+	    let pno = $(this).val();
+	    
+	    
+		
+		$.ajax({
+			type : 'post',
+			url : `${contextPath}/cart/updateCount`,
+			data : {id : auth.id, cnt : num, pno : pno},
+			success : function() {
+				location.assign("/project_shop/cart/cartIn")
+			},
+			error : function() {
+				alert("수정 실패")
+			}
+		})
+		
+	
 	});
 
 	$('.name').on('click',function(e){
