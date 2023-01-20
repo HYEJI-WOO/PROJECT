@@ -36,7 +36,7 @@
 					<td>
 						<button type="button" class="c_minus">-</button>
 					    <input type="text" class="cartCnt" name="cartCnt" value="${b.cart_cnt}" readonly="readonly"/>
-					    <button type="button" class="c_plus">+</button>
+					    <button type="button" value="${b.pno}" class="c_plus">+</button>
 					</td>					
 					<td><fmt:formatNumber value="${b.price * b.cart_cnt}" pattern="#,###원"/></td>
 					<td>

@@ -16,7 +16,6 @@ public class CartService {
 	// 장바구니
 	public void addCart(CartVO vo) {
 		dao.addCart(vo);
-			
 	}
 
 	public List<CartVO> cartIn(String id) {
@@ -29,6 +28,11 @@ public class CartService {
 	
 	public void delCheckCart(String id, String[] list) {
 		dao.delCheckCart(id, list);
+	}
+
+	public void updateCount(CartVO vo) {
+		dao.updateCount(vo);
+		
 	}
 	
 	

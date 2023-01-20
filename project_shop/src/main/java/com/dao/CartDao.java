@@ -135,4 +135,22 @@ public class CartDao {
 			e.printStackTrace();
 		}
 	}
+
+	public void updateCount(CartVO vo) {
+		String query = "update shop_cart set cart_cnt = ? where id=? and pno=?";
+		try( 
+			Connection conn = dataSource.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			){
+			
+				pstmt.setInt(1, vo.getCart_cnt());
+				pstmt.setString(2, vo.getId());
+				pstmt.setInt(3, vo.getPno());
+				pstmt.executeUpdate();
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
+		
+	}
 }

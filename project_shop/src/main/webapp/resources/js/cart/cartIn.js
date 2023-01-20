@@ -3,9 +3,19 @@ $(function(){
 	$('.c_plus').on('click', function(){
 		var num = $(this).prev().val()*1+1;
 		$(this).prev().val(num);
-		console.log(num);
-		let count = $(this).prev().val();
-		let price = $(this).next().val();
+		let pno = $(this).val();
+		
+		$.ajax({
+			type : 'post',
+			url : `${contextPath}/cart/updateCount`,
+			data : {id : auth.id, cnt : num, pno : pno},
+			success : function() {
+				location.assign("/project_shop/cart/cartIn")
+			},
+			error : function() {
+				alert("수정 실패")
+			}
+		})
 	})
 		
 	$('.c_minus').click(function(){ 
@@ -14,7 +24,6 @@ $(function(){
 	    if(num<=1) {
 		num = 1;
 	}	
-		
 	$(this).next().val(num);
 	});
 

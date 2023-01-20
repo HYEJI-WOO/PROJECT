@@ -90,11 +90,27 @@ public class CartController extends HttpServlet {
 			String data = request.getParameter("data");
 			String[] list = data.split(",");
 			service.delCheckCart(id, list);
-			
 			String result = "장바구니 삭제 성공";
 			out.print(gson.toJson(result));
 			return;
 			
+		}
+		
+		else if(pathInfo.equals("/updateCount")) {
+			String id = request.getParameter("id");
+			String cartCntParam = request.getParameter("cnt");
+			String paramPno = request.getParameter("pno");
+			int cartCnt = Integer.parseInt(cartCntParam);
+			int pno = Integer.parseInt(paramPno);
+			CartVO vo = CartVO.builder()
+					.id(id)
+					.pno(pno)
+					.cart_cnt(cartCnt)
+					.build();
+			service.updateCount(vo);
+			String result = "장바구니 수정 성공";
+			out.print(gson.toJson(result));
+			return;
 		}
 		
 		else {
