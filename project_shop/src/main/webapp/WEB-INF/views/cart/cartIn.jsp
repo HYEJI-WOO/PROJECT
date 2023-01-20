@@ -33,7 +33,11 @@
 					<td><a href="${b.name}" class="name"><img src="${contextPath}/resources/images/${b.name}.png" alt="${b.name}" width="100"/></a></td>
 					<td><a href="${b.name}" class="name">${b.name}</a></td>
 					<td><fmt:formatNumber value="${b.price}" pattern="#,###원"/></td>
-					<td>${b.cart_cnt}</td>
+					<td>
+						<button type="button" class="c_minus">-</button>
+					    <input type="text" class="cartCnt" name="cartCnt" value="${b.cart_cnt}" readonly="readonly"/>
+					    <button type="button" class="c_plus">+</button>
+					</td>					
 					<td><fmt:formatNumber value="${b.price * b.cart_cnt}" pattern="#,###원"/></td>
 					<td>
 						<input type="hidden" value="${b.price * b.cart_cnt}" name="hdPrice" class="hdPrice">

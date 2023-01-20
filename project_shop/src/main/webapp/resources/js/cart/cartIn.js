@@ -1,5 +1,22 @@
 $(function(){
 	
+	$('.c_plus').on('click', function(){
+		var num = $(this).prev().val()*1+1;
+		$(this).prev().val(num);
+		console.log(num);
+		let count = $(this).prev().val();
+		let price = $(this).next().val();
+	})
+		
+	$('.c_minus').click(function(){ 
+		var n = 0
+	    var num = $(this).next().val()*1-1;
+	    if(num<=1) {
+		num = 1;
+	}	
+		
+	$(this).next().val(num);
+	});
 
 	$('.name').on('click',function(e){
 		let cartForm = $('#cartForm')
