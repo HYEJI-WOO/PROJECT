@@ -1,6 +1,5 @@
 $(function(){
-	
-	
+
 	
 	$('.c_plus').on('click', function(){
 		var num = $(this).prev().val()*1+1;
@@ -22,12 +21,14 @@ $(function(){
 		
 	$('.c_minus').on('click', function(){
 	    var num = $(this).next().val()-1;
+	    
 	    if(num<=1) {
 			num = 1;
 		}
+		
+		
 	    $(this).next().val(num);
 	    let pno = $(this).val();
-	    
 	    
 		
 		$.ajax({
