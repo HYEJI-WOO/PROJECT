@@ -36,8 +36,24 @@ $(function(){
 		} else {
 			pnoSet.delete(pno)
 		}
-		console.log(pnoSet)
 	});
+	
+	$('.cartAllCheckBox').change(function(){
+		let pno = $('.cartCheckBox').val();
+	
+	
+	if($(".cartAllCheckBox").is(':checked')) {
+		$("input[name=chk]").each(function(i,e){
+			$(e).prop("checked", true);
+			pnoSet.add($(e).val());
+		})
+		
+	} else {
+		$("input[name=chk]").prop("checked", false);
+		pnoSet.delete(pno)
+	}
+	console.log(pnoSet)
+	})
 	
 	$('.delCheckCart').on('click', function(){
 		if(pnoSet.size<=0) {
@@ -60,32 +76,11 @@ $(function(){
 			}
 		})			
 	})	
+	
+	
 
 	
 });	
-
-function checkAll() {
-	let pnoSet = new Set();
-	
-	let pno = $('.cartCheckBox').val();
-	
-	
-	if($(".cartAllCheckBox").is(':checked')) {
-		$("input[name=chk]").each(function(i,e){
-			$(e).prop("checked", true);
-			pnoSet.add($(e).val());
-			console.log(e);
-		})
-		
-	} else {
-		$("input[name=chk]").prop("checked", false);
-		pnoSet.delete(pno)
-	}
-	console.log(pnoSet)
-}
-
-
-
 
 
 $(document).on("click", "input:checkbox[name=chk]", function() {

@@ -3,7 +3,7 @@
     
 <%@ include file="../layout/header.jsp" %>  
 <script src="${contextPath}/resources/js/cart/cartIn.js"></script> 
-	<h1>장바구니입니다.</h1>
+	<h4>장바구니</h4>
 <div class="container my-3">
 	<form id="cartForm">
 		<c:if test="${empty info}">
@@ -22,7 +22,7 @@
 					<th>가격</th>
 					<th>수량</th>
 					<th>합계</th>
-					<th><input type="checkbox" class="cartAllCheckBox" onclick="checkAll()"></th>
+					<th><input type="checkbox" class="cartAllCheckBox" ></th>
 				</tr>
 				<c:forEach items="${info}" var="b">
 				<tr>	
