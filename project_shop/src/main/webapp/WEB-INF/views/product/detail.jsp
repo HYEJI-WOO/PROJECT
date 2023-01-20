@@ -20,9 +20,9 @@
       <font size="2em" color="grey">상품설명</font>
       <p><b>${product.info}</b></p>
 	  <div>
-		<button type="button" class="minus">-</button>
-			<input type="text" class="cartCnt" name="cartCnt" value="${list.cart_cnt}1" readonly="readonly"/>
-		<button type="button" class="plus">+</button>
+		<button type="button" class="btn btn-outline-secondary minus">-</button>
+			<input type="text" class="cartCnt" name="cartCnt" value="${list.cart_cnt}1" readonly="readonly" style="width: 40px; height: 38px; text-align: center;"/>
+		<button type="button" class="btn btn-outline-secondary plus">+</button>
 	  </div>
       
       <button type="button" id="button" class="btn btn-outline-info cartBtn" value="${product.pno}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
@@ -37,7 +37,7 @@
 			<tr>
 				<th colspan="2">
 					<ul class="d-flex justify-content-between">
-						<li>댓글을 작성해주세요</li>
+						<li>리뷰를 작성해주세요</li>
 						<li class="form-inline">작성자 : <input type="text" class="reply_writer form-control ml-2" value="${auth.id}" readonly="readonly"></li>
 					</ul>
 				</th>
@@ -49,13 +49,13 @@
 				</td>
 			</tr>
 			<tr class="text-right">
-				<td colspan="2"><button class="btn btn-light reply_write">댓글등록</button></td>
+				<td colspan="2"><button class="btn btn-light reply_write">리뷰등록</button></td>
 			</tr>
 		</table>
 	</div>
 	<div class="productReplyList">
 		<div class="card">
-		  <div class="card-header bg-dark text-white">댓글목록</div>
+		  <div class="card-header bg-dark text-white">리뷰목록</div>
 		  <div class="card-body">
 		  	<ul class="list-group list-group-flush">
 		  		<li>여기 있음</li>
@@ -70,7 +70,7 @@
 	
 	      <!-- Modal Header -->
 	      <div class="modal-header">
-	        <h4 class="modal-title">댓글 등록</h4>
+	        <h4 class="modal-title">리뷰 등록</h4>
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	

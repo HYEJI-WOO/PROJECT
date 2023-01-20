@@ -33,10 +33,6 @@ $(function(){
 	});
 	
 	$('.plus').on('click', function(){
-		let count = $('.cartCnt').val();
-		console.log(count)
-		//var n = $('.plus').index(this);
-		//console.log(n)
 		var n = 0
 		var num = $(".cartCnt:eq("+n+")").val();
     	num = $(".cartCnt:eq("+n+")").val(num*1+1);
@@ -46,7 +42,7 @@ $(function(){
 	    var num = $(".cartCnt:eq("+n+")").val();
 	    if(num <=1) {
 			num = 2;
-	}
+		}
 	    num = $(".cartCnt:eq("+n+")").val(num*1-1); 
   });	
 	

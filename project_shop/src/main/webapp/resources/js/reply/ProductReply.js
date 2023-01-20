@@ -1,8 +1,6 @@
 let productReply = {
 	
 	list : function(name) {
-		console.log(name)
-		console.log('댓글목록')
 		$.ajax({
 			type : 'get',
 			url : `${contextPath}/productReply/list`,
@@ -12,7 +10,7 @@ let productReply = {
 				productList(productReplyList);
 			},
 			error : function() {
-				alert('댓글목록 조회 실패');
+				alert('리뷰목록 조회 실패');
 			} 			
 		}); // ajax end
 	},
@@ -29,7 +27,7 @@ let productReply = {
 				$('#reply').modal('show');
 			},
 			error : function(){
-				alert('댓글 등록 에러');
+				alert('리뷰 등록 에러');
 			}
 		});
 	},
@@ -44,11 +42,11 @@ let productReply = {
 				$('#reply').modal('show');
 			},
 			error : function() {
-				alert('댓글 삭제 에러')
+				alert('리뷰 삭제 에러')
 			}
 			
 		}); // ajax end
-		console.log('댓글삭제')
+		console.log('리뷰삭제')
 	}
 	
 	

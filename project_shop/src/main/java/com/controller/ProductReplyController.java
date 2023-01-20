@@ -70,7 +70,7 @@ public class ProductReplyController extends HttpServlet{
 							.build();
 
 			service.writer(vo);
-			String result = gson.toJson("댓글 등록 성공");
+			String result = gson.toJson("리뷰 등록 성공");
 			out.print(result);
 		}
 		else if(pathInfo.equals("/remove")) {
@@ -80,7 +80,7 @@ public class ProductReplyController extends HttpServlet{
 					.build();
 			
 			service.remove(vo);
-			String result = gson.toJson("댓글 삭제 성공");
+			String result = gson.toJson("리뷰 삭제 성공");
 			out.print(result);
 		}
 	}
