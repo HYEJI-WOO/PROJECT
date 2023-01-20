@@ -55,10 +55,13 @@ public class CartController extends HttpServlet {
 		if(pathInfo.equals("/addCart")) {
 			String id = request.getParameter("id");
 			String paramPno = request.getParameter("pno");
+			String cartCntParam = request.getParameter("cartCnt");
+			int cartCnt = Integer.parseInt(cartCntParam);
 			int pno = Integer.parseInt(paramPno);
 			CartVO vo = CartVO.builder()
 					.id(id)
 					.pno(pno)
+					.cart_cnt(cartCnt)
 					.build();
 			service.addCart(vo);
 			String result = "장바구니 담기 성공";

@@ -19,7 +19,13 @@
       <p><b><font size="3em">${product.weight}</b></p>
       <font size="2em" color="grey">상품설명</font>
       <p><b>${product.info}</b></p>
-      <button type="button" class="btn btn-outline-info cartBtn" value="${product.pno}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
+	  <div>
+		<button type="button" class="minus">-</button>
+			<input type="text" class="cartCnt" name="cartCnt" value="${list.cart_cnt}1" readonly="readonly"/>
+		<button type="button" class="plus">+</button>
+	  </div>
+      
+      <button type="button" id="button" class="btn btn-outline-info cartBtn" value="${product.pno}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
     </div>
   </div>
 </div>

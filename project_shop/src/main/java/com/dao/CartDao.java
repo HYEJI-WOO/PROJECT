@@ -44,7 +44,7 @@ public class CartDao {
 	
 	public void addCart(CartVO vo) {
 		String query = "INSERT INTO SHOP_CART(CART_ID, ID, PNO, CART_CNT) VALUES(SHOP_CART_ID_SEQ.NEXTVAL, ?, ?, ?)";
-		String query2 = "update SHOP_CART set CART_CNT = CART_CNT+1 where id=? and pno=?";
+		String query2 = "update SHOP_CART set CART_CNT = CART_CNT+? where id=? and pno=?";
 		try(Connection conn = dataSource.getConnection();){
 			try (
 				PreparedStatement pstmt = conn.prepareStatement(query);
@@ -54,13 +54,14 @@ public class CartDao {
 				if(checkCart(vo) == false) {
 					pstmt.setString(1, vo.getId());
 					pstmt.setInt(2, vo.getPno());
-					pstmt.setInt(3, 1);
+					pstmt.setInt(3, vo.getCart_cnt());
 					pstmt.executeUpdate();
 					conn.commit();
 				
 				} else {
-					pstmt2.setString(1, vo.getId());
-					pstmt2.setInt(2, vo.getPno());
+					pstmt2.setInt(1, vo.getCart_cnt());
+					pstmt2.setString(2, vo.getId());
+					pstmt2.setInt(3, vo.getPno());
 					pstmt2.executeUpdate();
 					conn.commit();
 				}

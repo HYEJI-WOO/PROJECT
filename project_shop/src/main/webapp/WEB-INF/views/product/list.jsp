@@ -45,8 +45,8 @@
 					<div><a href="${p.name}" class="name"><img src="${contextPath}/resources/images/${p.name}.png" alt="${p.name}" width="200"/></div>
 					<div>${p.name}</a></div>
 					<div><fmt:formatNumber value="${p.price}" pattern="#,###원"/></div>
-					
-					<button type="button" class="btn btn-outline-info cartBtn" value="${p.pno}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
+					<div><input type="hidden" value="1" class="cartCnt"></div>
+					<button type="button" id="button" class="btn btn-outline-info cartBtn" value="${p.pno}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
 					
 				</div>
 				</c:forEach>
