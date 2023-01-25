@@ -122,13 +122,14 @@ $(function(){
 		}
 	})
 	
+	let pnoListStr = Array.from(pnoSet).join()
+	
 	$('.delCheckCart').on('click', function(){
 		if(pnoSet.size<=0) {
 			alert('삭제할 상품을 선택하세요');
 			return;
 		}
-
-		let pnoListStr = Array.from(pnoSet).join()
+		
 			
 		$.ajax({
 			type : 'post',
@@ -142,10 +143,18 @@ $(function(){
 				alert('장바구니 삭제 실패')
 			}
 		})			
-	})	
+	})
 	
-	
-
+	$('.toBuyForm').on('click', function(){
+		if(pnoSet.size<=0) {
+			alert('주문할 상품을 선택하세요');
+			return;
+		}
+		
+		
+		
+		
+	})
 	
 });	
 
