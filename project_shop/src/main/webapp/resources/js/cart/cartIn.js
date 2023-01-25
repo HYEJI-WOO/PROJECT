@@ -122,7 +122,6 @@ $(function(){
 		}
 	})
 	
-	let pnoListStr = Array.from(pnoSet).join()
 	
 	$('.delCheckCart').on('click', function(){
 		if(pnoSet.size<=0) {
@@ -130,6 +129,7 @@ $(function(){
 			return;
 		}
 		
+		let pnoListStr = Array.from(pnoSet).join()
 			
 		$.ajax({
 			type : 'post',
@@ -151,9 +151,20 @@ $(function(){
 			return;
 		}
 		
+		let pnoListStr = Array.from(pnoSet).join()
 		
-		
-		
+		$.ajax({
+			type : 'post',
+			url : `${contextPath}/cart/orderCheck`,
+			data : {data : pnoListStr, id : auth.id},
+			success : function() {
+				alert('주문이 완료되었습니다.')
+				location.assign("/project_shop/cart/orderCheckForm")
+			},
+			error : function() {
+				alert('주문 실패')
+			}
+		})
 	})
 	
 });	

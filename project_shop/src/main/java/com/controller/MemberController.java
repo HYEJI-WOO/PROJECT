@@ -155,11 +155,6 @@ public class MemberController extends HttpServlet {
 		
 		
 		
-		// 주문내역
-		else if(pathInfo.equals("/orderList")) {
-			nextPage = "orderList";
-		}
-		
 		// 회원정보수정
 		else if(pathInfo.equals("/modMember")) {
 			String id = request.getParameter("id");

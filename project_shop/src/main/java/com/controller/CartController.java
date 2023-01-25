@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 import com.dao.CartDao;
 import com.domain.AuthVO;
 import com.domain.CartVO;
+import com.domain.OrderVO;
 import com.google.gson.Gson;
 import com.service.CartService;
 
@@ -113,6 +114,27 @@ public class CartController extends HttpServlet {
 			return;
 		}
 		
+		else if(pathInfo.equals("/orderCheck")) {
+			String id = request.getParameter("id");
+			String data = request.getParameter("data");
+			String[] list = data.split(",");
+			service.orderCheck(id, list);
+			String result = "주문 성공";
+			out.print(gson.toJson(result));
+			return;
+		}
+		
+		else if(pathInfo.equals("/orderCheckForm")) {
+			nextPage = "orderCheckForm";
+		}
+		
+		else if(pathInfo.equals("/orderList")) {
+			HttpSession session = request.getSession(false);
+			AuthVO auth = (AuthVO) session.getAttribute("auth");
+			List<OrderVO> info = service.orderList(auth.getId());
+			request.setAttribute("info", info);
+			nextPage = "orderList";
+		}
 		
 		else {
 			System.out.println("페이지를 찾을 수 없음");
