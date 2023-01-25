@@ -14,7 +14,6 @@ public class CartService {
 	
 	private CartDao dao;
 	
-	// 장바구니
 	public void addCart(CartVO vo) {
 		dao.addCart(vo);
 	}
