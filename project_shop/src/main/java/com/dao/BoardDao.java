@@ -11,6 +11,7 @@ import javax.sql.DataSource;
 import com.common.ConnectionUtil;
 import com.domain.BoardVO;
 import com.domain.Criteria;
+import com.domain.ReplyVO;
 
 public class BoardDao {
 	
@@ -171,13 +172,24 @@ public class BoardDao {
 	// 삭제 처리
 	public void deleteBoard(int bno) {
 		String query = "delete from SHOP_BOARD where bno=?";
-		try( 
-			Connection conn = dataSource.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(query);
-				
-		){
-			pstmt.setInt(1, bno);
-			pstmt.executeUpdate();
+		String query2 = "delete from shop_reply where bno=?";
+		try(Connection conn = dataSource.getConnection();){
+			try (
+					PreparedStatement pstmt = conn.prepareStatement(query);
+					PreparedStatement pstmt2 = conn.prepareStatement(query2);
+			){
+				conn.setAutoCommit(false);
+				pstmt.setInt(1, bno);
+				pstmt.executeUpdate();
+				pstmt2.setInt(1, bno);
+				pstmt2.executeUpdate();
+				conn.commit();
+			} catch (Exception e) {
+				conn.rollback();
+				e.printStackTrace();
+			} finally {
+				conn.setAutoCommit(true);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
