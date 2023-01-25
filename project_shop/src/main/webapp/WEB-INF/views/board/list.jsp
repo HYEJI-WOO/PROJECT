@@ -29,7 +29,7 @@
 				<td>${b.writeDate}</td>
 				<td>${b.replyCount != 0 ? 'O' : 'X'}</td>
 			</tr>
-			</c:forEach>
+			</c:forEach> 
 		</table>
 	</form>
 	<ul class="pagination d-flex justify-content-center">
