@@ -169,7 +169,7 @@ public class BoardDao {
 		}
 	}
 	
-	// 삭제 처리
+	// 삭제처리
 	public void deleteBoard(int bno) {
 		String query = "delete from SHOP_BOARD where bno=?";
 		String query2 = "delete from shop_reply where bno=?";
