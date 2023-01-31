@@ -84,14 +84,14 @@ function replyListRender(replyList) {
 					<button class="btn btn-sm btn-danger reply_delBtn">삭제</button>
 				</div>
 				`;
-	    	}
-	    	if(auth.grade=='ROLE_ADMIN' && r.writer != 'admin') {
+	    	} else if(auth.grade == 'ROLE_ADMIN') {
 				output+=`
 				<div class="align-self-center" data-rno="${r.rno}">
 					<button class="btn btn-sm btn-danger reply_delBtn">삭제</button>
 				</div>
 				`;
-	}
+		
+			}
 		}
 	output += `</li>`;
 	$('.replyList ul').html(output);

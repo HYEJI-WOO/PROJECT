@@ -1,4 +1,8 @@
 $(function(){
+	
+	if(auth.grade != 'ROLE_ADMIN') {
+		$('.pm').hide();
+	}
 
 	$('.name').on('click',function(e){
 		let productForm = $('#productForm')

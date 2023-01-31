@@ -4,7 +4,7 @@
 <script src="${contextPath}/resources/js/product/list.js"></script> 
 <h1>ALL</h1>
 <div class="container my-3">
-   <ul class="nav nav-pills justify-content-center">
+    <ul class="nav nav-pills justify-content-center">
 	    <li class="nav-item">
 	      <a class="nav-link" href="${contextPath}/product/list">ALL</a>
 	    </li>
@@ -14,7 +14,8 @@
 	    <li class="nav-item">
 	    <a class="nav-link" href="${contextPath}/product/sale">SALE</a>
 	    </li>
-  </ul>
+    </ul>
+	<button class="pm" style="float: right;">상품관리</button>
 </div>  
 
 <div class="container" style="margin-top:30px; margin-left:298px;">
@@ -47,7 +48,6 @@
 					<div><fmt:formatNumber value="${p.price}" pattern="#,###원"/></div>
 					<div><input type="hidden" value="1" class="cartCnt"></div>
 					<button type="button" id="button" class="btn btn-outline-info cartBtn" value="${p.pno}" style="float: right; margin-right: 23px; margin-bottom: 35px;">Cart</button>
-					
 				</div>
 				</c:forEach>
 			</div>
