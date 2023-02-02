@@ -68,6 +68,11 @@ public class ProductController extends HttpServlet {
 			nextPage = "sale";
 		}
 		
+		else if(pathInfo.equals("/manage")) {
+			List<ProductVO> productManage = service.productManage();
+			request.setAttribute("list", productManage);
+			nextPage = "manage";
+		}
 		else {
 			System.out.println("존재하지 않는 페이지");
 		}

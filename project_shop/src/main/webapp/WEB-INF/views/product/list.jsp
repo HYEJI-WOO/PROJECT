@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp" %>  
 <script src="${contextPath}/resources/js/product/list.js"></script> 
 <h1>ALL</h1>
-<div class="container my-3">
+<div class="container my-3" >
     <ul class="nav nav-pills justify-content-center">
 	    <li class="nav-item">
 	      <a class="nav-link" href="${contextPath}/product/list">ALL</a>
@@ -15,7 +15,9 @@
 	    <a class="nav-link" href="${contextPath}/product/sale">SALE</a>
 	    </li>
     </ul>
-	<button class="pm" style="float: right;">상품관리</button>
+    <form action="${contextPath}/product/manage">
+		<button class="pm" style="float: right;">상품관리</button>
+	</form>		
 </div>  
 
 <div class="container" style="margin-top:30px; margin-left:298px;">

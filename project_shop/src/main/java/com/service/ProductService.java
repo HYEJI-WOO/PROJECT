@@ -20,6 +20,10 @@ public class ProductService {
 	public ProductVO findProduct(String name) {
 		return dao.selectOne(name);
 	}
+
+	public List<ProductVO> productManage() {
+		return dao.productManage();
+	}
 	
 
 }

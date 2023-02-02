@@ -71,4 +71,29 @@ private DataSource dataSource;
 			
 		}
 
+		public List<ProductVO> productManage() {
+			String query = "select * from shop_product";
+			List<ProductVO> list = new ArrayList();
+			try (
+					Connection conn = dataSource.getConnection();
+					PreparedStatement pstmt = conn.prepareStatement(query);
+					ResultSet rs = pstmt.executeQuery();
+				){
+					while(rs.next()) {
+						ProductVO vo = ProductVO.builder()
+								.pno(rs.getInt("pno"))
+								.name(rs.getString("name"))
+								.price(rs.getInt("price"))
+								.info(rs.getString("info"))
+								.weight(rs.getString("weight"))
+								.category(rs.getString("category"))
+							.build();
+						list.add(vo);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			return list;
+		}
+
 }
