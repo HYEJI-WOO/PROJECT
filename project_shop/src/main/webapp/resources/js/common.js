@@ -8,7 +8,7 @@ $(function(){
 				if(value.startsWith("data:image/")) { // 이미지파일인경우
 					let imgTag = `<img src="${value}" alt="다운로드 이미지">`;
 					$('.preview').html(imgTag);
-				} else { // 이미지파일이 아닌경우
+				} else { // 이미지 파일이 아닌경우
 					alert('이미지 파일만 등록하세요');
 					$('input[name="imageFileName"]').val('');
 					$('.preview').html('');
