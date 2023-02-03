@@ -76,7 +76,7 @@ public class BoardDao {
 	
 	// 글쓰기
 	public int insertBoard(BoardVO vo) {
-		String query = "INSERT INTO SHOP_BOARD(BNO, TITLE, CONTENT, WRITER, imageFileName) VALUES(?,?,?,?,?)";
+		String query = "INSERT INTO SHOP_BOARD(BNO, TITLE, CONTENT, WRITER, imageFileName, replyCount) VALUES(?,?,?,?,?,0)";
 		int boardNo = getNewBno();
 		try (
 			Connection conn = dataSource.getConnection();
