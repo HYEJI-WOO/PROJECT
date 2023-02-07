@@ -99,5 +99,9 @@ public class ReplyDao {
 			e.printStackTrace();
 		}
 	}
+
+	public void modify(ReplyVO vo) {
+		String query = "update shop_reply set reply=? where rno=?";
+	}
 	
 }

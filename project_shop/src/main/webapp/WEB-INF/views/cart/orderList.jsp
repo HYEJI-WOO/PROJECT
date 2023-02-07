@@ -14,7 +14,7 @@
 		</li>
 	</ul>
 </div>
-    
+       
 <div class="container my-3">
 	<form id = "orderForm">
 		<c:if test="${empty info}">
@@ -23,6 +23,7 @@
 		<c:if test = "${not empty info}">
 			<table class="table">
 				<tr>
+					<th>주문날짜</th>
 					<th>번호</th>
 					<th>이미지</th>
 					<th>상품명</th>
@@ -30,8 +31,12 @@
 					<th>수량</th>
 					<th>합계</th>
 				</tr>
+				
 				<c:forEach items="${info}" var="b">
 				<tr>	
+					<td>
+						${b.regDate}
+					</td>
 					<td>
 						<c:set var="cno" value="${cno+1}"/>
 						<c:out value="${cno}"/>

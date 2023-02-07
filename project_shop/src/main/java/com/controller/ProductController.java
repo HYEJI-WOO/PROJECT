@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dao.ProductDao;
 import com.domain.BoardVO;
+import com.domain.MemberVO;
 import com.domain.ProductVO;
 import com.service.ProductService;
 
@@ -72,6 +73,32 @@ public class ProductController extends HttpServlet {
 			List<ProductVO> productManage = service.productManage();
 			request.setAttribute("list", productManage);
 			nextPage = "manage";
+		}
+		
+		else if(pathInfo.equals("/modproduct")) {
+			String parampno = request.getParameter("pno");
+			String name = request.getParameter("name");
+			String paramprice = request.getParameter("price");
+			String info = request.getParameter("info");
+			String weight = request.getParameter("weight");
+			String category = request.getParameter("category");
+			System.out.println(parampno);
+			System.out.println(name);
+			System.out.println(paramprice);
+			System.out.println(info);
+			System.out.println(weight);
+			System.out.println(category);
+			ProductVO vo = ProductVO.builder()
+					.pno(Integer.parseInt(parampno))
+					.name(name)
+					.price(Integer.parseInt(paramprice))
+					.info(info)
+					.weight(weight)
+					.category(category)
+					.build();
+			service.modProduct(vo);
+			response.sendRedirect(contextPath+"/product/manage");
+			return;
 		}
 		else {
 			System.out.println("존재하지 않는 페이지");

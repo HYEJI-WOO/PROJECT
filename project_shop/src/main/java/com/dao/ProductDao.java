@@ -9,6 +9,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.common.ConnectionUtil;
+import com.domain.MemberVO;
 import com.domain.ProductVO;
 
 public class ProductDao {
@@ -94,6 +95,27 @@ private DataSource dataSource;
 					e.printStackTrace();
 				}
 			return list;
+		}
+
+		public void updateProduct(ProductVO vo) {
+			String query = "update SHOP_PRODUCT set name=?, price=?, info=?, weight=?, category=? where pno=?";
+			try(Connection conn = dataSource.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(query);	
+			
+			){
+				pstmt.setString(1, vo.getName());
+				pstmt.setInt(2, vo.getPrice());
+				pstmt.setString(3, vo.getInfo());
+				pstmt.setString(4, vo.getWeight());
+				pstmt.setString(5, vo.getCategory());
+				pstmt.setInt(6, vo.getPno());
+				
+				pstmt.executeUpdate();
+				
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 
 }

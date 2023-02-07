@@ -24,5 +24,9 @@ public class ReplyService {
 	public void remove(ReplyVO vo) {
 		dao.remove(vo);
 	}
+
+	public void modify(ReplyVO vo) {
+		dao.modify(vo);
+	}
 	
 }

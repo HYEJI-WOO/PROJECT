@@ -80,8 +80,7 @@ $(function(){
 	
 	// 댓글 수정 버튼 이벤트
 	$('.replyList').on('click','.reply_modBtn', function(){
-		let rno = $(this).closest('div').data('rno');
-		alert('수정입니다 ' + rno + '번')
+		
 	});
 	
 	// 댓글 삭제 버튼 이벤트

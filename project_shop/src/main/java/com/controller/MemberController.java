@@ -131,7 +131,8 @@ public class MemberController extends HttpServlet {
 				response.sendRedirect(contextPath+"/product");
 				return;
 			} else {
-				System.out.println("MemberController.login : 아이디 또는 비밀번호 불일치");
+				request.setAttribute("message", "아이디 또는 비밀번호가 일치하지 않습니다.");  
+				nextPage = "loginForm";
 			}
 		}
 		

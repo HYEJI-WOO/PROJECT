@@ -37,8 +37,19 @@ let replyService = {
 		}); // ajax end
 	},
 	
-	modify : function() {
-		console.log('댓글수정')
+	modify : function(replyVO) {
+		$.ajax({
+			type : 'post',
+			url : `${contextPath}/reply/modify`,
+			data : replyVO,
+			success : function(result) {
+				alert('댓글 수정 성공')
+			},
+			error : function() {
+				alert('댓글 수정 에러')
+			}
+		})
+		
 	},
 	
 	remove : function(replyVO) {

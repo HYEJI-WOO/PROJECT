@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.dao.ProductDao;
 import com.domain.CartVO;
+import com.domain.MemberVO;
 import com.domain.ProductVO;
 
 import lombok.AllArgsConstructor;
@@ -23,6 +24,11 @@ public class ProductService {
 
 	public List<ProductVO> productManage() {
 		return dao.productManage();
+	}
+
+	public void modProduct(ProductVO vo) {
+		dao.updateProduct(vo);
+		
 	}
 	
 

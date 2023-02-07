@@ -70,6 +70,16 @@ public class ReplyController extends HttpServlet {
 			String result = gson.toJson("댓글 등록 성공");
 			out.print(result);
 			
+		} else if(pathInfo.equals("/modify")) {
+			String paramRno = request.getParameter("rno");
+			
+			ReplyVO vo = ReplyVO.builder()
+					.rno(Integer.parseInt(paramRno))
+					.reply(request.getParameter("reply")).build();
+			service.modify(vo);
+			String result = gson.toJson("댓글 수정 성공");
+			out.print(result);
+		
 		} else if(pathInfo.equals("/remove")) {
 			String paramBno = request.getParameter("bno");
 			String paramRno = request.getParameter("rno");

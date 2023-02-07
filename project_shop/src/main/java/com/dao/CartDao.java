@@ -190,7 +190,7 @@ public class CartDao {
 
 	public List<OrderVO> orderList(String id) {
 		List<OrderVO> list = new ArrayList();
-		String query = "select M.id, p.pno, p.Name, o.ORDER_CNT, p.price from SHOP_ORDER O inner join shop_product P on P.pno = O.pno inner join shop_member M on O.ID = M.ID where m.id = ?";
+		String query = "select M.id, p.pno, p.Name, o.ORDER_CNT, p.price, o.regDate from SHOP_ORDER O inner join shop_product P on P.pno = O.pno inner join shop_member M on O.ID = M.ID where m.id = ? order by regdate DESC";
 		try (
 				Connection conn = dataSource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(query);
@@ -204,6 +204,7 @@ public class CartDao {
 								.name(rs.getString("name"))
 								.order_cnt(rs.getInt("order_cnt"))
 								.price(rs.getString("price"))
+								.regDate(rs.getDate("regDate"))
 								.build();
 						list.add(vo);
 								

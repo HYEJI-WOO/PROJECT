@@ -8,6 +8,7 @@
 		<h1>로그인</h1>
 	</div>
 	
+	
 	<form action="${contextPath}/member/login" method="post">
 		<div class="form-group">
 			아이디 : <input type="text" class="form-control" name="id">
@@ -15,8 +16,10 @@
 		<div class="form-group">
 			비밀번호 : <input type="password" class="form-control" name="pwd">
 		</div>
+		<h6 style="color: red;">${message}</h6>
 		<button class="btn btn-primary">로그인</button>
 	</form>
+	
 </div>
 
 <%@ include file="../layout/footer.jsp" %>  
