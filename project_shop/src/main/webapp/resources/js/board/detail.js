@@ -42,6 +42,7 @@ $(function(){
 		.submit();
 	});
 	
+	
 	// 수정 처리
 	$('.modify').on('click', function(){
 		viewForm.attr({
