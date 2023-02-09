@@ -97,25 +97,22 @@ private DataSource dataSource;
 			return list;
 		}
 
-		public void updateProduct(ProductVO vo) {
-			String query = "update SHOP_PRODUCT set name=?, price=?, info=?, weight=?, category=? where pno=?";
+		public void addProduct(ProductVO vo) {
+			String query = "INSERT INTO SHOP_PRODUCT(PNO, NAME, PRICE, INFO, WEIGHT, CATEGORY) VALUES(SHOP_PNO_SEQ.NEXTVAL,?,?,?,?,?)";
 			try(Connection conn = dataSource.getConnection();
 				PreparedStatement pstmt = conn.prepareStatement(query);	
-			
-			){
-				pstmt.setString(1, vo.getName());
-				pstmt.setInt(2, vo.getPrice());
-				pstmt.setString(3, vo.getInfo());
-				pstmt.setString(4, vo.getWeight());
-				pstmt.setString(5, vo.getCategory());
-				pstmt.setInt(6, vo.getPno());
 				
-				pstmt.executeUpdate();
-				
-			} catch(Exception e) {
-				e.printStackTrace();
-			}
-			
+				){
+					pstmt.setString(1, vo.getName());
+					pstmt.setInt(2, vo.getPrice());
+					pstmt.setString(3, vo.getInfo());
+					pstmt.setString(4, vo.getWeight());
+					pstmt.setString(5, vo.getCategory());
+					pstmt.executeUpdate();
+					
+				} catch(Exception e) {
+					e.printStackTrace();
+				}
 		}
 
 }

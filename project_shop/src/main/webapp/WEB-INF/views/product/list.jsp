@@ -16,7 +16,7 @@
 	    </li>
     </ul>
     <form action="${contextPath}/product/manage">
-		<button class="pm" style="float: right;">상품관리</button>
+		<button class="pm" style="float: right;">상품등록</button>
 	</form>		
 </div>  
 

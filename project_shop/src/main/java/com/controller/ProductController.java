@@ -2,6 +2,7 @@ package com.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -70,36 +71,30 @@ public class ProductController extends HttpServlet {
 		}
 		
 		else if(pathInfo.equals("/manage")) {
-			List<ProductVO> productManage = service.productManage();
-			request.setAttribute("list", productManage);
 			nextPage = "manage";
 		}
 		
-		else if(pathInfo.equals("/modproduct")) {
-			String parampno = request.getParameter("pno");
+		else if(pathInfo.equals("/addProduct")) {
 			String name = request.getParameter("name");
 			String paramprice = request.getParameter("price");
-			String info = request.getParameter("info");
 			String weight = request.getParameter("weight");
+			String info = request.getParameter("info");
 			String category = request.getParameter("category");
-			System.out.println(parampno);
-			System.out.println(name);
-			System.out.println(paramprice);
-			System.out.println(info);
-			System.out.println(weight);
-			System.out.println(category);
+			int price = Integer.parseInt(paramprice);
+			
 			ProductVO vo = ProductVO.builder()
-					.pno(Integer.parseInt(parampno))
 					.name(name)
-					.price(Integer.parseInt(paramprice))
-					.info(info)
+					.price(price)
 					.weight(weight)
+					.info(info)
 					.category(category)
 					.build();
-			service.modProduct(vo);
-			response.sendRedirect(contextPath+"/product/manage");
+			service.addProduct(vo);
+			
+			response.sendRedirect(contextPath+"/product");
 			return;
 		}
+
 		else {
 			System.out.println("존재하지 않는 페이지");
 		}

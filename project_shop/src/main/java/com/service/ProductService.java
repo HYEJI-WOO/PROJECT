@@ -26,8 +26,8 @@ public class ProductService {
 		return dao.productManage();
 	}
 
-	public void modProduct(ProductVO vo) {
-		dao.updateProduct(vo);
+	public void addProduct(ProductVO vo) {
+		dao.addProduct(vo);
 		
 	}
 	
