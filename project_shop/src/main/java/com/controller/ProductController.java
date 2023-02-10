@@ -60,7 +60,7 @@ public class ProductController extends HttpServlet {
 			nextPage = "detail";
 		}
 		
-		// 베스트상품
+		// 베스트 상품
 		else if(pathInfo.equals("/best")) {
 			nextPage = "best";
 		}
